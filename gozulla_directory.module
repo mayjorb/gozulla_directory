@@ -1,0 +1,201 @@
+<?php
+
+include_once('gozulla_directory.features.inc');
+
+
+
+/**
+ * Implementation of hook_menu().
+ */
+ 
+ 
+function gozulla_directory_menu() {
+  $items = array();
+    $items['surf'] = array(
+      'title' => 'Surf Directory',
+      'page callback' => 'gozulla_directory_surf',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+      );
+    $items['skate'] = array(
+      'title' => 'Skate Directory',
+      'page callback' => 'gozulla_directory_skate',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['snow'] = array(
+      'title' => 'Snow Directory',
+      'page callback' => 'gozulla_directory_snow',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['golf'] = array(
+      'title' => 'Golf Directory',
+      'page callback' => 'gozulla_directory_golf',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['climb'] = array(
+      'title' => 'Climb Directory',
+      'page callback' => 'gozulla_directory_climb',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['bike'] = array(
+      'title' => 'Bike Directory',
+      'page callback' => 'gozulla_directory_bike',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['boat'] = array(
+      'title' => 'Boat Directory',
+      'page callback' => 'gozulla_directory_boat',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['disc'] = array(
+      'title' => 'Disc Golf Directory',
+      'page callback' => 'gozulla_directory_disc',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['help'] = array(
+      'title' => 'Help On The Way',
+      'page callback' => 'gozulla_directory_help',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+  return $items;
+}
+
+function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
+  switch($form_id) {
+    case 'views_exposed_form':
+      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {     
+        // Using dpm with Devel installed to give me array data on the Views form
+        //dpm($form);
+        $form['submit']['#value'] = t('go'); 
+        $form['circle']['location']['#default_value'] = t('97330'); 
+        $form['circle']['value']['#field_prefix'] = t('Shops within'); 
+        $form['circle']['value']['#field_suffix'] = t('miles as the crow flies'); 
+      }
+    break;
+  }
+}
+
+// Populate the page template suggestions.
+  if ($suggestions = theme_get_suggestions(arg(), 'html')) {
+    $variables['theme_hook_suggestions'] = $suggestions;
+  }
+
+
+/**
+ * Constructs a sports directory page.
+ */
+function gozulla_directory_surf() {
+ 
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="surf-directory">' . t('replace with surf directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_skate() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="skate-directory">' . t('replace with skate directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_snow() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="snow-directory">' . t('replace with snow directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_golf() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="golf-directory">' . t('replace with golf directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_disc() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="disc-directory">' . t('replace with disc golf directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_climb() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="climb-directory">' . t('replace with climb directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_bike() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="bike-directory">' . t('replace with bike directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_boat() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="boat-directory">' . t('replace with boat directory') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+function gozulla_directory_help() {
+  return array('#markup' => '
+    <ul>
+      <li>
+        <div id="help-on-the-way">' . t('replace with help on the way info') . '</div>
+      </li>
+    </ul>
+    '
+  );
+}
+
+
+//dsm($node);
+//hook_form_alter();
+
+
+
+
