@@ -74,7 +74,10 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
       if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {     
         // Using dpm with Devel installed to give me array data on the Views form
         //dpm($form);
-        $form['submit']['#value'] = t('go'); 
+        $form['submit'] = array(
+          '#type' => 'image_button',
+          '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
+        );
         $form['circle']['location']['#default_value'] = t('Newport, OR'); 
         $form['circle']['value']['#field_prefix'] = t('Shops within'); 
         $form['circle']['value']['#field_suffix'] = t('miles as the crow flies'); 
@@ -82,6 +85,14 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
     break;
   }
 }
+
+/*
+$form['submit'] = array(
+      '#type' => 'image_button',
+      '#src' => drupal_get_path('module', 'mymodule') .'/addtocartimage.gif',
+      '#weight' => 15,
+    );
+*/
 
 // Populate the page template suggestions.
   if ($suggestions = theme_get_suggestions(arg(), 'html')) {
