@@ -75,7 +75,7 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
         // Using dpm with Devel installed to give me array data on the Views form
         //dpm($form);
         $form['submit']['#value'] = t('go'); 
-        $form['circle']['location']['#default_value'] = t('97330'); 
+        $form['circle']['location']['#default_value'] = t('Newport, OR'); 
         $form['circle']['value']['#field_prefix'] = t('Shops within'); 
         $form['circle']['value']['#field_suffix'] = t('miles as the crow flies'); 
       }
