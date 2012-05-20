@@ -59,12 +59,12 @@ function gozulla_directory_menu() {
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
     );
-    $items['help'] = array(
+   /* $items['help'] = array(
       'title' => 'Help On The Way',
       'page callback' => 'gozulla_directory_help',
       'access callback' => TRUE,
       'type' => MENU_CALLBACK,
-    );
+    );*/
   return $items;
 }
 
