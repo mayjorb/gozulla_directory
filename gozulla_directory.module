@@ -192,7 +192,7 @@ function gozulla_directory_boat() {
   );
 }
 
-function gozulla_directory_help() {
+/*function gozulla_directory_help() {
   return array('#markup' => '
     <ul>
       <li>
@@ -201,11 +201,9 @@ function gozulla_directory_help() {
     </ul>
     '
   );
-}
+}*/
 
 
-//dsm($node);
-//hook_form_alter();
 
 
 
