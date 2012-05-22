@@ -144,7 +144,7 @@ function gozulla_directory_snow() {
   $user_lon = '-123.2682439';
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
-  $limit = 10;
+  $limit = 20;
 
   $category = 'Sports & Recreation > Outdoor Recreation > Ski & Snowboard';
 
@@ -190,7 +190,7 @@ function gozulla_directory_golf() {
   $user_lon = '-123.2682439';
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
-  $limit = 10;
+  $limit = 20;
 
   $category = 'Sports & Recreation > Outdoor Recreation > Golf';
 
@@ -259,7 +259,7 @@ function gozulla_directory_bike() {
   $user_lon = '-123.2682439';
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
-  $limit = 10;
+  $limit = 20;
 
   $category = 'Shopping > Bicycle Sales & Service';
 
