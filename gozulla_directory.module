@@ -82,14 +82,14 @@ $city_state = t('Cannon Beach, Oregon');
 function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
   switch ($form_id) {
     case 'views_exposed_form':
-      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {    
+      /*if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {    
         
         if (isset($_SESSION['smart_ip']['location'])) {
           $city_state = $_SESSION['smart_ip']['location']['locality'] . ', ' . $_SESSION['smart_ip']['location']['administrative_area_level_1'];
         }
         else {
           $city_state = t('Cannon Beach, Oregon');
-        }
+        }*/
         // Using dpm with Devel installed to give me array data on the Views form
         //dpm($form);
         $form['submit'] = array(
