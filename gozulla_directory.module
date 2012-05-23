@@ -65,7 +65,7 @@ function gozulla_directory_menu() {
   return $items;
 }
 
-// dpm($_SESSION['smart_ip']['location']);
+ //dpm($_SESSION['smart_ip']['location']);
 
 /*
 
@@ -83,8 +83,8 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
     case 'views_exposed_form':
       if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {    
         
-        if ($_SESSION['smart_ip']['location']) {
-          $city_state = $_SESSION['smart_ip']['location']['locality'] . ', ' . $_SESSION['smart_ip']['location']['region'];
+        if (isset($_SESSION['smart_ip']['location'])) {
+          $city_state = $_SESSION['smart_ip']['location']['locality'] . ', ' . $_SESSION['smart_ip']['location']['administrative_area_level_1'];
         }
         else {
           $city_state = t('Cannon Beach, Oregon');
@@ -175,7 +175,7 @@ function gozulla_directory_snow() {
   // commom params for factual search
   // TODO: Set these to smart_ip session data
   
-  if ($_SESSION['smart_ip']['location']) {
+  if (isset($_SESSION['smart_ip']['location'])) {
     $user_lat = $_SESSION['smart_ip']['location']['latitude'];
     $user_lon = $_SESSION['smart_ip']['location']['longitude'];
   }
@@ -228,7 +228,7 @@ function gozulla_directory_golf() {
   
   // commom params for factual search
   // TODO: Set these to smart_ip session data
-  if ($_SESSION['smart_ip']['location']) {
+  if (isset($_SESSION['smart_ip']['location'])) {
     $user_lat = $_SESSION['smart_ip']['location']['latitude'];
     $user_lon = $_SESSION['smart_ip']['location']['longitude'];
   }
@@ -304,7 +304,7 @@ function gozulla_directory_climb() {
 function gozulla_directory_bike() {
   // commom params for factual search
   // TODO: Set these to smart_ip session data
-  if (!$_SESSION['smart_ip']['location']) {
+  if (isset($_SESSION['smart_ip']['location'])) {
     $user_lat = $_SESSION['smart_ip']['location']['latitude'];
     $user_lon = $_SESSION['smart_ip']['location']['longitude'];
   }
