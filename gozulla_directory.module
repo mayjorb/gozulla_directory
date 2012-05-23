@@ -65,7 +65,7 @@ function gozulla_directory_menu() {
   return $items;
 }
 
-dpm($_SESSION['smart_ip']['location']);
+// dpm($_SESSION['smart_ip']['location']);
 
 /*
 
