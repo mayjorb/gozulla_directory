@@ -184,6 +184,9 @@ function gozulla_directory_snow() {
     $user_lon = '-123.9643052';
   }
   
+  $user_lat = '45.8817737'; // cannon beach, oregon
+  $user_lon = '-123.9643052';
+  
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
   $limit = 20;
@@ -236,6 +239,9 @@ function gozulla_directory_golf() {
     $user_lat = '45.8817737'; // cannon beach, oregon
     $user_lon = '-123.9643052';
   }
+  
+  $user_lat = '45.8817737'; // cannon beach, oregon
+  $user_lon = '-123.9643052';
   
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
@@ -312,6 +318,9 @@ function gozulla_directory_bike() {
     $user_lat = '45.8817737'; // cannon beach, oregon
     $user_lon = '-123.9643052';
   }
+  
+  $user_lat = '45.8817737'; // cannon beach, oregon
+  $user_lon = '-123.9643052';
   
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
