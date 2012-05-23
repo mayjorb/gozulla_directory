@@ -2,6 +2,7 @@
 
 include_once('gozulla_directory.features.inc');
 
+
 /**
  * Implementation of hook_menu().
  */
@@ -64,23 +65,56 @@ function gozulla_directory_menu() {
   return $items;
 }
 
+dpm($_SESSION['smart_ip']['location']);
+
+/*
+
+
+$_SESSION['smart_ip']['location']['latitude']
+$_SESSION['smart_ip']['location']['longitude']
+
+locality //city
+region //state
+*/
+
+
 function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
-  switch($form_id) {
+  switch ($form_id) {
     case 'views_exposed_form':
-      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {     
+      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {    
+        
+        if ($_SESSION['smart_ip']['location']) {
+          $city_state = $_SESSION['smart_ip']['location']['locality'] . ', ' . $_SESSION['smart_ip']['location']['region'];
+        }
+        else {
+          $city_state = t('Cannon Beach, Oregon');
+        }
         // Using dpm with Devel installed to give me array data on the Views form
         //dpm($form);
         $form['submit'] = array(
           '#type' => 'image_button',
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
-        $form['circle']['location']['#default_value'] = t('Newport, OR'); 
+        $form['circle']['location']['#default_value'] = $city_state; 
         $form['circle']['value']['#field_prefix'] = t('Shops within'); 
         $form['circle']['value']['#field_suffix'] = t('miles as the crow flies'); 
       }
     break;
   }
 }
+
+/**
+ * Implements hook_theme()
+ */
+/*function gozulla_directory_theme() {
+  return array(
+    'gozulla_directory_sport_shops' => array(
+      'render element' => 'shops',
+      'template'       => 'gozulla-directory-sport-shops',
+      'path'           => drupal_get_path('module', 'gozulla_directory') . '/theme',
+    ),
+  );
+}*/
 
 /*
 $form['submit'] = array(
@@ -140,8 +174,16 @@ function gozulla_directory_skate() {
 function gozulla_directory_snow() {
   // commom params for factual search
   // TODO: Set these to smart_ip session data
-  $user_lat = '44.5808151';
-  $user_lon = '-123.2682439';
+  
+  if ($_SESSION['smart_ip']['location']) {
+    $user_lat = $_SESSION['smart_ip']['location']['latitude'];
+    $user_lon = $_SESSION['smart_ip']['location']['longitude'];
+  }
+  else {
+    $user_lat = '45.8817737'; // cannon beach, oregon
+    $user_lon = '-123.9643052';
+  }
+  
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
   $limit = 20;
@@ -186,8 +228,15 @@ function gozulla_directory_golf() {
   
   // commom params for factual search
   // TODO: Set these to smart_ip session data
-  $user_lat = '44.5808151';
-  $user_lon = '-123.2682439';
+  if ($_SESSION['smart_ip']['location']) {
+    $user_lat = $_SESSION['smart_ip']['location']['latitude'];
+    $user_lon = $_SESSION['smart_ip']['location']['longitude'];
+  }
+  else {
+    $user_lat = '45.8817737'; // cannon beach, oregon
+    $user_lon = '-123.9643052';
+  }
+  
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
   $limit = 20;
@@ -255,8 +304,15 @@ function gozulla_directory_climb() {
 function gozulla_directory_bike() {
   // commom params for factual search
   // TODO: Set these to smart_ip session data
-  $user_lat = '44.5808151';
-  $user_lon = '-123.2682439';
+  if (!$_SESSION['smart_ip']['location']) {
+    $user_lat = $_SESSION['smart_ip']['location']['latitude'];
+    $user_lon = $_SESSION['smart_ip']['location']['longitude'];
+  }
+  else {
+    $user_lat = '45.8817737'; // cannon beach, oregon
+    $user_lon = '-123.9643052';
+  }
+  
   $radius =  100;
   $circle_radius = gozulla_directory_miles_to_meters($radius);
   $limit = 20;
