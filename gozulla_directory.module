@@ -111,9 +111,9 @@ function gozulla_directory_menu() {
   return $items;
 }
 
-$current_location = '<div>Current location: ' . $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'] . '<br />' . $_SESSION['ip_geoloc']['location']['latitude'] . ',' . $_SESSION['ip_geoloc']['location']['longitude'] . '</div>';
+/*$current_location = '<div>Current location: ' . $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'] . '<br />' . $_SESSION['ip_geoloc']['location']['latitude'] . ',' . $_SESSION['ip_geoloc']['location']['longitude'] . '</div>';
  drupal_set_message($current_location);
-
+*/
 /*
 
 
