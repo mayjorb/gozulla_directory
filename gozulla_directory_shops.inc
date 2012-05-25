@@ -97,7 +97,7 @@ switch ($sport) {
     case 'boat':
       //start building search
       $query = new FactualQuery;
-      $category = '';
+      $category = 'Sports & Recreation > Outdoor Recreation > Canoes & Kayaks';
       $query->limit($limit);
       $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
       $query->field("category")->equal($category);
@@ -107,7 +107,7 @@ switch ($sport) {
     case 'climb':
       //start building search
       $query = new FactualQuery;
-      $category = '';
+      $category = 'Sports & Recreation > Outdoor Recreation > Rock Climbing';
       $query->limit($limit);
       $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
       $query->field("category")->equal($category);
