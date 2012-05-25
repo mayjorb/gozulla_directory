@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * gozulla_directory.install
+*/
+
+/**
+* Implementation of hook_install()
+*/
+function gozulla_directory_install() {
+  variable_set('gozulla_directory_factual_key', '');
+  variable_set('gozulla_directory_factual_secret', '');
+}
+
+/**
+* Implementation of hook_uninstall()
+*/
+function extension_settings_uninstall() {
+  // Remove the module from the system table
+  db_query("DELETE FROM {system} WHERE `name` = 'gozulla_directory'");
+  db_query("DELETE FROM {variable} WHERE `name` LIKE 'gozulla_directory_%'");
+}
