@@ -111,7 +111,8 @@ function gozulla_directory_menu() {
   return $items;
 }
 
- //dpm($_SESSION['smart_ip']['location']);
+$current_location = '<div>Current location: ' . $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'] . '<br />' . $_SESSION['ip_geoloc']['location']['latitude'] . ',' . $_SESSION['ip_geoloc']['location']['longitude'] . '</div>';
+ drupal_set_message($current_location);
 
 /*
 
@@ -133,6 +134,8 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
   else {
     $city_state = t('Cannon Beach, Oregon');
   }
+  
+  
   
   switch ($form_id) {
     case 'views_exposed_form':
