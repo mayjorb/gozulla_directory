@@ -54,48 +54,6 @@ function gozulla_directory_menu() {
   );
 
   $items = array();
-    $items['surf'] = array(
-      'title' => 'Surf Directory',
-      'page callback' => 'gozulla_directory_surf',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-      );
-    $items['skate'] = array(
-      'title' => 'Skate Directory',
-      'page callback' => 'gozulla_directory_skate',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
-    $items['snow'] = array(
-      'title' => 'Snow Directory',
-      'page callback' => 'gozulla_directory_snow',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
-    $items['golf'] = array(
-      'title' => 'Golf Directory',
-      'page callback' => 'gozulla_directory_golf',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
-    $items['climb'] = array(
-      'title' => 'Climb Directory',
-      'page callback' => 'gozulla_directory_climb',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
-    $items['bike'] = array(
-      'title' => 'Bike Directory',
-      'page callback' => 'gozulla_directory_bike',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
-    $items['boat'] = array(
-      'title' => 'Boat Directory',
-      'page callback' => 'gozulla_directory_boat',
-      'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
-    );
     $items['disc'] = array(
       'title' => 'Disc Golf Directory',
       'page callback' => 'gozulla_directory_disc',
@@ -111,21 +69,6 @@ function gozulla_directory_menu() {
   return $items;
 }
 
-/*$current_location = '<div>Current location: ' . $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'] . '<br />' . $_SESSION['ip_geoloc']['location']['latitude'] . ',' . $_SESSION['ip_geoloc']['location']['longitude'] . '</div>';
- drupal_set_message($current_location);
-*/
-/*
-
-
-$_SESSION['smart_ip']['location']['latitude']
-$_SESSION['smart_ip']['location']['longitude']
-
-locality //city
-region //state
-*/
-
-//$city_state = t('Cannon Beach, Oregon');
-//dpm($_SESSION['ip_geoloc']['location']);
 function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
   
   if (isset($_SESSION['ip_geoloc']['location']['locality']) && isset($_SESSION['ip_geoloc']['location']['administrative_area_level_1'])) {
@@ -135,11 +78,15 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
     $city_state = t('Cannon Beach, Oregon');
   }
   
-  
-  
   switch ($form_id) {
     case 'views_exposed_form':
-      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1') {    
+      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-2' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-3' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-4' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-5' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-6' ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-7') {    
         
         // Using dpm with Devel installed to give me array data on the Views form
         //dpm($form);
@@ -168,13 +115,6 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
   );
 }*/
 
-/*
-$form['submit'] = array(
-      '#type' => 'image_button',
-      '#src' => drupal_get_path('module', 'mymodule') .'/addtocartimage.gif',
-      '#weight' => 15,
-    );
-*/
 
 // Populate the page template suggestions.
 if ($suggestions = theme_get_suggestions(arg(), 'html')) {
@@ -182,34 +122,9 @@ if ($suggestions = theme_get_suggestions(arg(), 'html')) {
 }
 
 
-
 /**
  * Constructs a sports directory page.
  */
-function gozulla_directory_surf() {
-
-  $sport = 'surf';
-  include_once('gozulla_directory_shops.inc'); // common include
-  return array('#markup' => $shops);
-  
-}
-
-function gozulla_directory_skate() {
-  
-  $sport = 'skate';
-  include_once('gozulla_directory_shops.inc'); // common include
-  return array('#markup' => $shops);
-  
-}
-
-function gozulla_directory_snow() {
-
-  $sport = 'snow';
-  include_once('gozulla_directory_shops.inc'); // common include
-  return array('#markup' => $shops);
-
-}
-
 function gozulla_directory_disc() {
   return array('#markup' => '
     <ul>
@@ -219,38 +134,6 @@ function gozulla_directory_disc() {
     </ul>
     '
   );
-}
-
-function gozulla_directory_climb() {
-  
-  $sport = 'climb';
-   include_once('gozulla_directory_shops.inc'); // common include
-   return array('#markup' => $shops);
-   
-}
-
-function gozulla_directory_bike() {
-  
-  $sport = 'bike';
-  include_once('gozulla_directory_shops.inc'); // common include
-  return array('#markup' => $shops);
-  
-}
-
-function gozulla_directory_boat() {
-  
-  $sport = 'boat';
-  include_once('gozulla_directory_shops.inc'); // common include
-  return array('#markup' => $shops);
-
-}
-
-function gozulla_directory_golf() {
-  
-  $sport = 'golf';
-  include_once('gozulla_directory_shops.inc'); // common include
-  return array('#markup' => $shops);
-
 }
 
 /*function gozulla_directory_help() {
@@ -263,6 +146,181 @@ function gozulla_directory_golf() {
     '
   );
 }*/
+
+/**
+ * Implements hook_block_info().
+ *
+ * This hook declares what blocks are provided by the module.
+ */
+function gozulla_directory_block_info() {
+
+  // Many options are defined in hook_block_info():
+  $blocks['surf'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: surf shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'surf',
+  );
+  
+  $blocks['bike'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: bike shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'bike',
+  );
+  
+  $blocks['skate'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: skate shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'skate',
+  );
+  
+  $blocks['snow'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: snow shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'snow',
+  );
+  
+  $blocks['climb'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: climb shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'climb',
+  );
+  
+  $blocks['boat'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: boat shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'boat',
+  );
+  
+ $blocks['golf'] = array(
+   // info: The name of the block.
+   'info' => t('gozulla: golf shops (factual places)'),
+   'status' => TRUE,
+   'region' => 'content', 
+   'visibility' => BLOCK_VISIBILITY_LISTED,
+   'pages' => 'golf',
+ );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * This hook generates the contents of the blocks themselves.
+ */
+function gozulla_directory_block_view($delta = '') {
+  //The $delta parameter tells us which block is being requested.
+  $block = '';
+  switch ($delta) {
+    case 'surf':
+      // The subject is displayed at the top of the block. Note that it
+      // should be passed through t() for translation. 
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+      
+    case 'bike':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+      
+    case 'skate':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+      
+    case 'snow':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+      
+    case 'climb':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+      
+    case 'boat':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+
+    case 'golf':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;  
+          
+  }
+  return $block;
+}
+
+/**
+ * A module-defined block content function.
+ */
+function gozulla_directory_contents($which_block) {
+  //$shops = array();
+  switch ($which_block) {
+    case 'surf':
+      $sport = 'surf';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+      
+    case 'bike':
+      $sport = 'bike';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+      
+    case 'skate':
+      $sport = 'skate';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+      
+    case 'snow':
+      $sport = 'snow';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+      
+    case 'climb':
+      $sport = 'climb';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+        
+    case 'boat':
+      $sport = 'boat';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break; 
+      
+    case 'golf':
+      $sport = 'golf';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break; 
+  }
+}
+
 
 
 
