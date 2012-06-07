@@ -146,7 +146,7 @@ switch ($sport) {
 }
 
 $shops = '';
-//dpm($result->getData());
+dpm($result->getData());
 if ($result->getData()) {
 
   foreach ($result->getData() as $value) {
@@ -155,13 +155,16 @@ if ($result->getData()) {
        $shops .= '<h3 class="">' . $value['name'] . '</h3>';
        $shops .= '<div class="">' . $value['address'] . '</div>';
        $shops .= '<div class="">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
-       $shops .= '<div class="">United States</div>';
+       //$shops .= '<div class="">United States</div>';
        $shops .= '<div class="">~ ' . gozulla_directory_meters_to_miles($value['$distance']) . ' miles</div>';
        //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
-       if (isset($value['category'])) { 
+       if (isset($value['website'])) { 
+          $shops .= '<div class=""><a href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
+        }
+        if (isset($value['category'])) { 
          $shops .= '<div class="">Category ' . $value['category'] . '</div>';
        }
-       
+
      }
        
   }
