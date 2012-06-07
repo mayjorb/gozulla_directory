@@ -146,7 +146,7 @@ switch ($sport) {
 }
 
 $shops = '';
-dpm($result->getData());
+//dpm($result->getData());
 if ($result->getData()) {
 
   foreach ($result->getData() as $value) {
