@@ -22,7 +22,7 @@ function gozulla_directory_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'gozulla directory';
+  $handler->display->display_options['title'] = 'gozulla skate directory';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -31,7 +31,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
@@ -224,7 +224,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['circle']['id'] = 'circle';
   $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
   $handler->display->display_options['filters']['circle']['field'] = 'circle';
-  $handler->display->display_options['filters']['circle']['value']['value'] = '50';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '20';
   $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
   $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
   $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
@@ -235,24 +235,109 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
   $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
   $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Filter criterion: Content: Sports (field_sport_type) */
+  $handler->display->display_options['filters']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
+    0 => '26',
+  );
+  $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
 
   /* Display: surf */
   $handler = $view->new_display('page', 'surf', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'gozulla surf directory';
   $handler->display->display_options['display_description'] = 'gozulla surf directory';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_location' => 'gozulla_location',
+  );
+  /* Filter criterion: Proximity: Great-circle */
+  $handler->display->display_options['filters']['circle']['id'] = 'circle';
+  $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['filters']['circle']['field'] = 'circle';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '20';
+  $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
+  $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
+  $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
+  $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
+  $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
+  $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
+  /* Filter criterion: Content: Sports (field_sport_type) */
+  $handler->display->display_options['filters']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
+    0 => '22',
+  );
+  $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
   $handler->display->display_options['path'] = 'surf';
 
   /* Display: skate */
   $handler = $view->new_display('page', 'skate', 'page_2');
   $handler->display->display_options['display_description'] = 'gozulla skate directory';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_location' => 'gozulla_location',
+  );
+  /* Filter criterion: Proximity: Great-circle */
+  $handler->display->display_options['filters']['circle']['id'] = 'circle';
+  $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['filters']['circle']['field'] = 'circle';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '20';
+  $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
+  $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
+  $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
+  $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
+  $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
+  $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
+  /* Filter criterion: Content: Sports (field_sport_type) */
+  $handler->display->display_options['filters']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
+    0 => '23',
+  );
+  $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
   $handler->display->display_options['path'] = 'skate';
 
   /* Display: geofield map */
   $handler = $view->new_display('attachment', 'geofield map', 'geofield_map');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'geofield_map_map';
@@ -391,6 +476,7 @@ function gozulla_directory_views_default_views() {
     'block' => 0,
     'page_2' => 0,
   );
+  $handler->display->display_options['inherit_exposed_filters'] = 1;
 
   /* Display: featured shop */
   $handler = $view->new_display('block', 'featured shop', 'featured_shop');
@@ -595,9 +681,161 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_gozulla_subscription_value']['value'] = array(
     1 => '1',
   );
+
+  /* Display: snow */
+  $handler = $view->new_display('page', 'snow', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'gozulla snow directory';
+  $handler->display->display_options['display_description'] = 'gozulla snow directory';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_location' => 'gozulla_location',
+  );
+  /* Filter criterion: Proximity: Great-circle */
+  $handler->display->display_options['filters']['circle']['id'] = 'circle';
+  $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['filters']['circle']['field'] = 'circle';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '50';
+  $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
+  $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
+  $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
+  $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
+  $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
+  $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
+  /* Filter criterion: Content: Sports (field_sport_type) */
+  $handler->display->display_options['filters']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
+    0 => '24',
+  );
+  $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['path'] = 'snow';
+
+  /* Display: bike */
+  $handler = $view->new_display('page', 'bike', 'page_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'gozulla bike directory';
+  $handler->display->display_options['display_description'] = 'gozulla bike directory';
+  $handler->display->display_options['path'] = 'bike';
+
+  /* Display: climb */
+  $handler = $view->new_display('page', 'climb', 'page_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'gozulla climb directory';
+  $handler->display->display_options['display_description'] = 'gozulla climb directory';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_location' => 'gozulla_location',
+  );
+  /* Filter criterion: Proximity: Great-circle */
+  $handler->display->display_options['filters']['circle']['id'] = 'circle';
+  $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['filters']['circle']['field'] = 'circle';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '20';
+  $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
+  $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
+  $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
+  $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
+  $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
+  $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
+  /* Filter criterion: Content: Sports (field_sport_type) */
+  $handler->display->display_options['filters']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
+    0 => '27',
+  );
+  $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['path'] = 'climb';
+
+  /* Display: boat */
+  $handler = $view->new_display('page', 'boat', 'page_6');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'gozulla boat directory';
+  $handler->display->display_options['display_description'] = 'gozulla boat directory';
+  $handler->display->display_options['path'] = 'boat';
+
+  /* Display: golf */
+  $handler = $view->new_display('page', 'golf', 'page_7');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'gozulla golf directory';
+  $handler->display->display_options['display_description'] = 'gozulla golf directory';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_location' => 'gozulla_location',
+  );
+  /* Filter criterion: Proximity: Great-circle */
+  $handler->display->display_options['filters']['circle']['id'] = 'circle';
+  $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['filters']['circle']['field'] = 'circle';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '20';
+  $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
+  $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
+  $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
+  $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
+  $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
+  $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
+  /* Filter criterion: Content: Sports (field_sport_type) */
+  $handler->display->display_options['filters']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
+    0 => '28',
+  );
+  $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['path'] = 'golf';
   $translatables['gozulla_directory'] = array(
     t('Master'),
-    t('gozulla directory'),
+    t('gozulla skate directory'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -614,11 +852,9 @@ function gozulla_directory_views_default_views() {
     t('Geofield'),
     t('&nbsp;'),
     t('[ edit ]'),
-    t('Block'),
     t('surf'),
     t('gozulla surf directory'),
     t('skate'),
-    t('gozulla skate directory'),
     t('geofield map'),
     t('[title] 
 [field_address]'),
@@ -626,6 +862,16 @@ function gozulla_directory_views_default_views() {
     t('one hot shop'),
     t('Displays random gozulla location'),
     t('node/[nid]'),
+    t('snow'),
+    t('gozulla snow directory'),
+    t('bike'),
+    t('gozulla bike directory'),
+    t('climb'),
+    t('gozulla climb directory'),
+    t('boat'),
+    t('gozulla boat directory'),
+    t('golf'),
+    t('gozulla golf directory'),
   );
   $export['gozulla_directory'] = $view;
 
