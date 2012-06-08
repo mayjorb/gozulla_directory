@@ -62,7 +62,7 @@ else {
 
 $circle_radius = gozulla_directory_miles_to_meters($radius);
 
-$limit = 10;
+$limit = 30;
 
 $factual = new Factual($factual_key,$factual_secret); //2-legged OAUTH
 
@@ -73,41 +73,71 @@ switch ($sport) {
   case 'bike':
     //start building search
     $query = new FactualQuery;
-    $category = 'Shopping > Bicycle Sales & Service';
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $query->field("category")->equal($category);
+
+    $query->_or(array(
+        $query->field("category")->equal("Sports & Recreation > Bicycle Rentals"),
+        $query->field("category")->equal("Shopping > Bicycle Sales & Service"),
+        $query->field("name")->search("bicycle"),
+        $query->field("name")->search("bike"),
+        $query->field("name")->search("bike shop")
+       )
+    );
+    
     $result = $factual->fetch("places", $query);
     break;
     
   case 'skate':
     //start building search
     $query = new FactualQuery;
-    $category = '';
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+
     $query->field("name")->search("skate");
+    $query->field("name")->notEqual("Fuel Surf Skate Moto");
+    $query->field("category")->notBeginsWith("Arts, Entertainment & Nightlife");
+    $query->field("category")->notBeginsWith("Sports & Recreation > Ice Skating");
+    $query->field("category")->notBeginsWith("Business & Professional Services > Advertising & Marketing");
+    
     $result = $factual->fetch("places", $query);
     break;
-    
+   
   case 'snow':
     //start building search
     $query = new FactualQuery;
-    $category = 'Sports & Recreation > Outdoor Recreation > Ski & Snowboard';
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $query->field("category")->equal($category);
+
+    $query->_or(array(
+        $query->field("category")->equal("Sports & Recreation > Outdoor Recreation > Ski & Snowboard"),
+        //$query->field("name")->search("ski"),
+        //$query->field("name")->search("snowboard"),
+        //$query->field("name")->search("snow")
+       )
+    );
+
     $result = $factual->fetch("places", $query);
     break;
       
   case 'surf':
     //start building search
     $query = new FactualQuery;
-    $category = '';
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    //$query->field("category")->equal($category);
+   
     $query->field("name")->search("surf");
+    $query->field("name")->notEqual("Fuel Surf Skate Moto");
+    $query->field("category")->notBeginsWith("Travel & Tourism");
+    $query->field("category")->notBeginsWith("Food & Beverage");
+    $query->field("category")->notBeginsWith("Real Estate & Home Improvement");
+    $query->field("category")->notBeginsWith("Shopping > Music");
+    $query->field("category")->notBeginsWith("Personal Care & Services");
+    $query->field("category")->notBeginsWith("Business & Professional Services");
+    $query->field("category")->notBeginsWith("Shopping > Department Stores");
+    $query->field("category")->notBeginsWith("Community & Government");
+    $query->field("category")->notBeginsWith("Sports & Recreation > Outdoor Recreation > Campgrounds & RV Parks");
+    $query->field("category")->notBeginsWith("Shopping > Computers & Electronics");
     $result = $factual->fetch("places", $query);
     break;
       
@@ -134,10 +164,17 @@ switch ($sport) {
   case 'climb':
     //start building search
     $query = new FactualQuery;
-    $category = 'Sports & Recreation > Outdoor Recreation > Rock Climbing';
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $query->field("category")->equal($category);
+    
+    $query->_or(array(
+        $query->field("category")->equal("Sports & Recreation > Outdoor Recreation > Rock Climbing"),
+        //$query->field("name")->search("climb"),
+        //$query->field("name")->search("rock"),
+        //$query->field("name")->search("mountain")
+       )
+    );
+    
     $result = $factual->fetch("places", $query);
     break;
       
@@ -159,7 +196,7 @@ if ($result->getData()) {
        $shops .= '<div class="">~ ' . gozulla_directory_meters_to_miles($value['$distance']) . ' miles</div>';
        //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
        if (isset($value['website'])) { 
-          $shops .= '<div class=""><a href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
+          $shops .= '<div class=""><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
         }
         if (isset($value['category'])) { 
          $shops .= '<div class="">Category ' . $value['category'] . '</div>';
