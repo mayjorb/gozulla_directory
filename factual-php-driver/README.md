@@ -491,27 +491,70 @@ The schema endpoint returns table metadata:
 	$res = $factual->schema("places");
 	print_r($res->getColumnSchemas());
 
-# Exception Handling
 
-If Factual's API indicates an error, a <tt>FactualApiException</tt> unchecked Exception will be thrown. It will contain details about the request you sent and the error that Factual returned.
+#Help, Debugging & Testing
+
+##Exception Handling
+If Factual's API indicates an error, a <tt>FactualApiException</tt> unchecked Exception will be thrown. It contains every possible details about the request you sent and the error that Factual returned.  Example:
+
+	PHP Fatal error:  Uncaught exception 'FactualApiException' with message 'Requested resource could not be found. Details:
+	Array
+	(
+	    [code] => 404
+	    [version] => 3
+	    [status] => error
+	    [error_type] => Auth
+	    [message] => Requested resource could not be found.
+	    [headers] => Array
+		(
+		    [access-control-allow-origin] => *
+		    [content-type] => application/json; charset=utf-8
+		    [date] => Thu, 31 May 2012 23:50:16 GMT
+		    [server] => nginx/1.0.15
+		    [content-length] => 101
+		    [connection] => keep-alive
+		)
+
+	    [request] => http://api.v3.factual.com/t/bglobal
+	    [method] => GET
+	    [query] => http://api.v3.factual.com/t/bglobal
+	)
+
+	use FactualApiException::debug() to obtain this information programatically. 
 
 Here is an example of catching a <tt>FactualApiException</tt> and inspecting it:
 
-	try{
+    try{
     	$query->field("badFieldName")->notIn("Los Angeles"); //this line borks 
     	$res = $factual->fetch("places", $query);
     } catch (FactualApiException $e) {
-      	echo "URL:\t" . $e->getRequestUrl()."\n\n";
-      	echo "Method:\t" . $e->getRequestMethod()."\n\n";
-      	echo "Status:\t" . $e->getStatus()."\n\n";
-      	echo "Msg:\t " . $e->getMessage()."\n\n";
-      	echo "Code:\t " . $e->getCode()."\n\n";
-      	echo "Type:\t" . $e->getErrorType()."\n\n";
-      	echo "Ver:\t " . $e->getVersion()."\n\n";
+      	print_r($e->debug());
     }
 
+## Where to Get Help
+If you think you've identified a *specific bug* in this driver, please file an issue in this github repo. Provide as much information as you can, including:
+
+  * All of the debug info output by the exception (above)
+  * What you did to surface the bug -- specific code with values over variables helps greatly here
+  * What you expected to happen & what actually happened
+  * Detailed stack trace and/or line numbers
+
+If you are having any other kind of issue, such as unexpected data or strange behaviour from Factual's API (or you're just not sure WTF is going on), please hit us up on [GetSatisfaction](http://support.factual.com/factual), again -- be sure to include the above information.
+
+## Testing
+Add your secret and key to <tt>test.php</tt> and run on the command line: 'php test.php' ('php -f test.php' on Windows).  This checks your PHP install environment and performs a number of ad-hoc unit tests.
+
+## Raw Requests
+The driver mainly offer convenence: it signs requests, builds conformant queries, and structures responses. You may however wish to pass a 'raw' query to our API for degugging, testing, or implementing API features not yet codified in the driver:
+
+	$query = "http://api.v3.factual.com/t/global";
+	print_r($factual->rawGet($query));	
+	exit;
+
+The rawGet() method only signs and submits the request; remember to escape your JSON.
+
 # Geocoding
-Factual does not provide a geocoding service, but we've integrated a third-party Web Service that can easily be swapped out.  
+Factual does not provide a geocoding service, but we've integrated a third-party Web Service that can easily be swapped out.
 
 These methods are experimental and unsupported, but (we hope) helpful:
 
@@ -525,22 +568,8 @@ These methods are experimental and unsupported, but (we hope) helpful:
 	$res = $factual->reverseGeocode($lon,$lat);
 	print_r($res);	
 
-# Testing
-Add your secret and key to <tt>test.php</tt> and run on the command line: 'php test.php' ('php -f test.php' on Windows).  This checks your PHP install environmnt and performs a number of ad-hoc unit tests.
-
 # Notes and Miscellany
 
 ##Autoloading
 
-The <tt>__autoload()</tt> method is deprecated; this library uses <tt>spl_autoload_register()</tt>.
-
-# Where to Get Help
-
-If you think you've identified a specific bug in this driver, please file an issue in this github repo. Please be as specific as you can, including:
-
-  * What you did to surface the bug
-  * What you expected to happen
-  * What actually happened
-  * Detailed stack trace and/or line numbers
-
-If you are having any other kind of issue, such as unexpected data or strange behaviour from Factual's API (or you're just not sure WHAT'S going on), please contact us through [GetSatisfaction](http://support.factual.com/factual).
+The PHP <tt>__autoload()</tt> method is deprecated; this library uses <tt>spl_autoload_register()</tt>.

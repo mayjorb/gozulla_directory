@@ -20,7 +20,6 @@ require_once('oauth-php/library/OAuthRequester.php');
  */
 class Factual {
 	
-  const DRIVER_HEADER_TAG = "factual-php-driver-v1.1.1"; //Custom headerPHP 
   private $factHome; //string assigned from config
   private $signer; //OAuthStore object
   private $config; //array from config.ini file on construct
@@ -151,6 +150,31 @@ class Factual {
     return $this->factHome."t/".$tableName."?".$query->toUrlQuery();
   }
 
+	protected function urlForFacets($tableName, $query)  {
+    	return "t/" . $tableName . "/facets?".$query->toUrlQuery();
+  }
+
+ /*
+  protected function urlForGeocode() {
+    return "places/geocode";
+  }
+
+  protected function urlForGeopulse() {
+    return "places/geopulse";
+  }
+*/
+
+	/**
+	 * Signs a 'raw' request (a complete query) and returns the JSON results
+	 * Note that this does not process the quey at all -- just signs and returns results
+	 * @param string urlStr unsigned URL request. Must be correctly escaped.
+	 * @return string JSON reponse
+	 */
+  public function rawGet($urlStr){
+  	$res = $this->request($urlStr);
+  	return $res['body'];
+  }
+
 	/**
 	 * Sign the request, perform a curl request and return the results
 	 * @param string urlStr unsigned URL request
@@ -159,22 +183,41 @@ class Factual {
   private function request($urlStr) {
 	$requestMethod = "GET";
 	$params = null;
-	$customHeaders[CURLOPT_HTTPHEADER] = array("X-Factual-Lib: ".self::DRIVER_HEADER_TAG); //custom header
+	$customHeaders[CURLOPT_HTTPHEADER] = array("X-Factual-Lib: ".$this->config['factual']['driverversion']); //custom header
     // Build request with OAuth request params
     $request = new OAuthRequester($urlStr, $requestMethod, $params);
  	//Make request
-    try {
-    	$result = $request->doRequest(0,$customHeaders);
-    	$result['request'] = $urlStr; //pass request string onto response
-    	$result['tablename'] = $this->lastTable; //pass table name to result object
-    	return $result;
-	} catch(Exception $e) {
-		$factualE = new FactualApiException($e);
-		$factualE->requestMethod($requestMethod);	
-		$factualE->requestUrl($urlStr);
+	$result = $request->doRequest(0,$customHeaders);
+	$result['request'] = $urlStr; //pass request string onto response
+	$result['tablename'] = $this->lastTable; //pass table name to result object (not available with rawGet())
+	//exception handling
+	if ($result['code'] >= 400){
+		$body = json_decode($result['body'],true);
+		//get a boatload of debug data
+		$info['code'] = $result['code'];
+		$info['version'] = $body['version'];
+		$info['status'] = $body['status'];
+		$info['error_type'] = $body['error_type'];
+		$info['message'] = $body['message'];
+		$info['headers'] = $result['headers'];
+		$info['request'] = $result['request'];
+		$info['driver'] = $this->config['driverversion'];
+		if (!empty($result['tablename'])){$info['tablename'] = $result['tablename'];}
+		$info['method'] =  $requestMethod;
+    	//chuck exception
+		$factualE = new FactualApiException($info);
 		throw $factualE;
 	}
+    	return $result;
   }
+  
+  /**
+   * Gets driver version
+   * @return string
+   */
+  public function version(){
+  	return $this->config['factual']['driverversion'];
+  }  
   
   //The following methods are included as handy convenience; unsupported and experimental
   //They rely on a loosely-coupled third-party service that can be easily swapped out
