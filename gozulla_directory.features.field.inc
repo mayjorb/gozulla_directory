@@ -10,7 +10,7 @@
 function gozulla_directory_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-gozulla_location-field_address'
+  // Exported field: 'node-gozulla_location-field_address'.
   $fields['node-gozulla_location-field_address'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20,6 +20,7 @@ function gozulla_directory_field_default_fields() {
       'field_name' => 'field_address',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'addressfield',
       'settings' => array(
         'profile2_private' => 0,
@@ -99,7 +100,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_description'
+  // Exported field: 'node-gozulla_location-field_description'.
   $fields['node-gozulla_location-field_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -120,6 +121,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -174,7 +176,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_factual_id'
+  // Exported field: 'node-gozulla_location-field_factual_id'.
   $fields['node-gozulla_location-field_factual_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -195,6 +197,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -248,7 +251,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_geofield'
+  // Exported field: 'node-gozulla_location-field_geofield'.
   $fields['node-gozulla_location-field_geofield'] = array(
     'field_config' => array(
       'active' => '1',
@@ -258,6 +261,7 @@ function gozulla_directory_field_default_fields() {
       'field_name' => 'field_geofield',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'geofield',
       'settings' => array(
         'profile2_private' => 0,
@@ -353,7 +357,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_gozulla_subscription'
+  // Exported field: 'node-gozulla_location-field_gozulla_subscription'.
   $fields['node-gozulla_location-field_gozulla_subscription'] = array(
     'field_config' => array(
       'active' => '1',
@@ -367,6 +371,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -427,7 +432,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_location_brands'
+  // Exported field: 'node-gozulla_location-field_location_brands'.
   $fields['node-gozulla_location-field_location_brands'] = array(
     'field_config' => array(
       'active' => '1',
@@ -448,6 +453,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -502,7 +508,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_location_description'
+  // Exported field: 'node-gozulla_location-field_location_description'.
   $fields['node-gozulla_location-field_location_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -523,6 +529,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -570,7 +577,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_location_email'
+  // Exported field: 'node-gozulla_location-field_location_email'.
   $fields['node-gozulla_location-field_location_email'] = array(
     'field_config' => array(
       'active' => '1',
@@ -580,6 +587,7 @@ function gozulla_directory_field_default_fields() {
       'field_name' => 'field_location_email',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'email',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -633,7 +641,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_location_hours'
+  // Exported field: 'node-gozulla_location-field_location_hours'.
   $fields['node-gozulla_location-field_location_hours'] = array(
     'field_config' => array(
       'active' => '1',
@@ -654,6 +662,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -709,7 +718,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_location_logo'
+  // Exported field: 'node-gozulla_location-field_location_logo'.
   $fields['node-gozulla_location-field_location_logo'] = array(
     'field_config' => array(
       'active' => '1',
@@ -730,6 +739,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -801,7 +811,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_location_photos'
+  // Exported field: 'node-gozulla_location-field_location_photos'.
   $fields['node-gozulla_location-field_location_photos'] = array(
     'field_config' => array(
       'active' => '1',
@@ -822,6 +832,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -895,7 +906,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_phone'
+  // Exported field: 'node-gozulla_location-field_phone'.
   $fields['node-gozulla_location-field_phone'] = array(
     'field_config' => array(
       'active' => '1',
@@ -916,6 +927,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '20',
@@ -971,7 +983,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_places_id'
+  // Exported field: 'node-gozulla_location-field_places_id'.
   $fields['node-gozulla_location-field_places_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -992,6 +1004,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1045,7 +1058,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_sport_type'
+  // Exported field: 'node-gozulla_location-field_sport_type'.
   $fields['node-gozulla_location-field_sport_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1066,6 +1079,7 @@ function gozulla_directory_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1125,7 +1139,7 @@ function gozulla_directory_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-gozulla_location-field_website'
+  // Exported field: 'node-gozulla_location-field_website'.
   $fields['node-gozulla_location-field_website'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1135,6 +1149,7 @@ function gozulla_directory_field_default_fields() {
       'field_name' => 'field_website',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(

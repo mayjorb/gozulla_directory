@@ -77,11 +77,11 @@ switch ($sport) {
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
 
     $query->_or(array(
-        $query->field("category")->equal("Sports & Recreation > Bicycle Rentals"),
-        $query->field("category")->equal("Shopping > Bicycle Sales & Service"),
+       //$query->field("category")->equal("Sports & Recreation > Bicycle Rentals"),
+        //$query->field("category")->equal("Shopping > Bicycle Sales & Service"),
         $query->field("name")->search("bicycle"),
         $query->field("name")->search("bike"),
-        $query->field("name")->search("bike shop")
+        //$query->field("name")->search("bike shop")
        )
     );
     
@@ -189,18 +189,22 @@ if ($result->getData()) {
   foreach ($result->getData() as $value) {
 
     if ($value['status'] == 1) {
-       $shops .= '<h3 class="">' . $value['name'] . '</h3>';
-       $shops .= '<div class="">' . $value['address'] . '</div>';
-       $shops .= '<div class="">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
-       //$shops .= '<div class="">United States</div>';
-       $shops .= '<div class="">~ ' . gozulla_directory_meters_to_miles($value['$distance']) . ' miles</div>';
-       //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
-       if (isset($value['website'])) { 
-          $shops .= '<div class=""><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
-        }
-        if (isset($value['category'])) { 
-         $shops .= '<div class="">Category ' . $value['category'] . '</div>';
+       $shops .= '<h3 class="places-shop fs-large">' . $value['name'] . '</h3>';
+       if (isset($value['address'])) { 
+         $shops .= '<div class="places-detail fs-smallest">' . $value['address'] . '</div>';
        }
+       if (isset($value['locality'])) { 
+         $shops .= '<div class="places-detail fs-smallest">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
+       }
+       //$shops .= '<div class="">United States</div>';
+       $shops .= '<div class="places-detail fs-smallest">~ ' . gozulla_directory_meters_to_miles($value['$distance']) . ' miles</div>';
+       //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
+      // if (isset($value['website'])) { 
+       //   $shops .= '<div class=""><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
+      //  }
+        //if (isset($value['category'])) { 
+         //$shops .= '<div class="">Category ' . $value['category'] . '</div>';
+      // }
 
      }
        
@@ -208,5 +212,5 @@ if ($result->getData()) {
 
 }
 else {
-  $shops .= '<h3>no ' . $sport . ' shops found</h3><p>Try increasing the miles from your location.</p>';
+  $shops .= '<h3>no ' . $sport . ' shops found</h3><p>Try increasing the miles and/or changing the location.</p>';
 }

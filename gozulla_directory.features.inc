@@ -31,7 +31,7 @@ function gozulla_directory_views_api() {
 function gozulla_directory_image_default_styles() {
   $styles = array();
 
-  // Exported image style: colorbox_image
+  // Exported image style: colorbox_image.
   $styles['colorbox_image'] = array(
     'name' => 'colorbox_image',
     'effects' => array(
@@ -54,7 +54,7 @@ function gozulla_directory_image_default_styles() {
     ),
   );
 
-  // Exported image style: detail_thumbnail
+  // Exported image style: detail_thumbnail.
   $styles['detail_thumbnail'] = array(
     'name' => 'detail_thumbnail',
     'effects' => array(
@@ -77,7 +77,7 @@ function gozulla_directory_image_default_styles() {
     ),
   );
 
-  // Exported image style: gozulla_client_logo
+  // Exported image style: gozulla_client_logo.
   $styles['gozulla_client_logo'] = array(
     'name' => 'gozulla_client_logo',
     'effects' => array(
