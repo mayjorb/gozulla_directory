@@ -22,7 +22,7 @@ function gozulla_directory_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'gozulla skate directory';
+  $handler->display->display_options['title'] = 'gozulla directory';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -248,7 +248,7 @@ function gozulla_directory_views_default_views() {
   /* Display: surf */
   $handler = $view->new_display('page', 'surf', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla surf directory';
+  $handler->display->display_options['title'] = 'surf directory';
   $handler->display->display_options['display_description'] = 'gozulla surf directory';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -293,6 +293,8 @@ function gozulla_directory_views_default_views() {
 
   /* Display: skate */
   $handler = $view->new_display('page', 'skate', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'skate directory';
   $handler->display->display_options['display_description'] = 'gozulla skate directory';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -685,7 +687,7 @@ function gozulla_directory_views_default_views() {
   /* Display: snow */
   $handler = $view->new_display('page', 'snow', 'page_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla snow directory';
+  $handler->display->display_options['title'] = 'snow directory';
   $handler->display->display_options['display_description'] = 'gozulla snow directory';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -731,14 +733,14 @@ function gozulla_directory_views_default_views() {
   /* Display: bike */
   $handler = $view->new_display('page', 'bike', 'page_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla bike directory';
+  $handler->display->display_options['title'] = 'bike directory';
   $handler->display->display_options['display_description'] = 'gozulla bike directory';
   $handler->display->display_options['path'] = 'bike';
 
   /* Display: climb */
   $handler = $view->new_display('page', 'climb', 'page_5');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla climb directory';
+  $handler->display->display_options['title'] = 'climb directory';
   $handler->display->display_options['display_description'] = 'gozulla climb directory';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -784,14 +786,14 @@ function gozulla_directory_views_default_views() {
   /* Display: boat */
   $handler = $view->new_display('page', 'boat', 'page_6');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla boat directory';
+  $handler->display->display_options['title'] = 'boat directory';
   $handler->display->display_options['display_description'] = 'gozulla boat directory';
   $handler->display->display_options['path'] = 'boat';
 
   /* Display: golf */
   $handler = $view->new_display('page', 'golf', 'page_7');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla golf directory';
+  $handler->display->display_options['title'] = 'golf directory';
   $handler->display->display_options['display_description'] = 'gozulla golf directory';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -835,7 +837,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['path'] = 'golf';
   $translatables['gozulla_directory'] = array(
     t('Master'),
-    t('gozulla skate directory'),
+    t('gozulla directory'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -853,8 +855,11 @@ function gozulla_directory_views_default_views() {
     t('&nbsp;'),
     t('[ edit ]'),
     t('surf'),
+    t('surf directory'),
     t('gozulla surf directory'),
     t('skate'),
+    t('skate directory'),
+    t('gozulla skate directory'),
     t('geofield map'),
     t('[title] 
 [field_address]'),
@@ -863,14 +868,19 @@ function gozulla_directory_views_default_views() {
     t('Displays random gozulla location'),
     t('node/[nid]'),
     t('snow'),
+    t('snow directory'),
     t('gozulla snow directory'),
     t('bike'),
+    t('bike directory'),
     t('gozulla bike directory'),
     t('climb'),
+    t('climb directory'),
     t('gozulla climb directory'),
     t('boat'),
+    t('boat directory'),
     t('gozulla boat directory'),
     t('golf'),
+    t('golf directory'),
     t('gozulla golf directory'),
   );
   $export['gozulla_directory'] = $view;
