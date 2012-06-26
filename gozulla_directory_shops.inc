@@ -202,9 +202,9 @@ if ($result->getData()) {
       // if (isset($value['website'])) { 
        //   $shops .= '<div class=""><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
       //  }
-        //if (isset($value['category'])) { 
-         //$shops .= '<div class="">Category ' . $value['category'] . '</div>';
-      // }
+        if (isset($value['category'])) { 
+         $shops .= '<div class="">Category ' . $value['category'] . '</div>';
+       }
 
      }
        

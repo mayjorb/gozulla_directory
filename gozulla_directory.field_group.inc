@@ -51,9 +51,9 @@ function gozulla_directory_field_group_info() {
     'label' => 'guids',
     'weight' => '12',
     'children' => array(
-      0 => 'field_gozulla_subscription',
-      1 => 'field_factual_id',
-      2 => 'field_places_id',
+      0 => 'field_places_id',
+      1 => 'field_gozulla_subscription',
+      2 => 'field_factual_id',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

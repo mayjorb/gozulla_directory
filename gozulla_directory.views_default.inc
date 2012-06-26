@@ -243,7 +243,7 @@ function gozulla_directory_views_default_views() {
     0 => '26',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
 
   /* Display: surf */
   $handler = $view->new_display('page', 'surf', 'page_1');
@@ -288,7 +288,7 @@ function gozulla_directory_views_default_views() {
     0 => '22',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'surf';
 
   /* Display: skate */
@@ -334,7 +334,7 @@ function gozulla_directory_views_default_views() {
     0 => '23',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'skate';
 
   /* Display: geofield map */
@@ -679,7 +679,6 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_gozulla_subscription_value']['id'] = 'field_gozulla_subscription_value';
   $handler->display->display_options['filters']['field_gozulla_subscription_value']['table'] = 'field_data_field_gozulla_subscription';
   $handler->display->display_options['filters']['field_gozulla_subscription_value']['field'] = 'field_gozulla_subscription_value';
-  $handler->display->display_options['filters']['field_gozulla_subscription_value']['operator'] = 'not in';
   $handler->display->display_options['filters']['field_gozulla_subscription_value']['value'] = array(
     1 => '1',
   );
@@ -727,7 +726,7 @@ function gozulla_directory_views_default_views() {
     0 => '24',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'snow';
 
   /* Display: bike */
@@ -780,7 +779,7 @@ function gozulla_directory_views_default_views() {
     0 => '27',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'climb';
 
   /* Display: boat */
@@ -833,7 +832,7 @@ function gozulla_directory_views_default_views() {
     0 => '28',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'golf';
   $translatables['gozulla_directory'] = array(
     t('Master'),
