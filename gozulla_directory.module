@@ -86,7 +86,8 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
         $form['#id'] == 'views-exposed-form-gozulla-directory-page-4' || 
         $form['#id'] == 'views-exposed-form-gozulla-directory-page-5' || 
         $form['#id'] == 'views-exposed-form-gozulla-directory-page-6' ||
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-7') {    
+        $form['#id'] == 'views-exposed-form-gozulla-directory-page-7' ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-deals') {    
         
         // Using dpm with Devel installed to give me array data on the Views form
         //dpm($form);
@@ -95,7 +96,13 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
         $form['circle']['location']['#default_value'] = $city_state; 
-        $form['circle']['value']['#field_prefix'] = t('Shops within'); 
+        if ($form['#id'] == 'views-exposed-form-gozulla-directory-deals') {
+          $form['circle']['value']['#field_prefix'] = t('Deals within'); 
+        }
+        else {
+          $form['circle']['value']['#field_prefix'] = t('Shops within'); 
+        }
+        
         $form['circle']['value']['#field_suffix'] = t('miles as the crow flies'); 
       }
     break;
