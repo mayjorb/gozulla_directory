@@ -36,6 +36,8 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['columns'] = '3';
+  $handler->display->display_options['style_options']['fill_single_line'] = 1;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -245,11 +247,17 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
   $handler->display->display_options['filters']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
   $handler->display->display_options['filters']['field_sport_type_tid']['value'] = array(
-    0 => '22',
+    0 => '12',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'surf';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'surf';
+  $handler->display->display_options['menu']['description'] = 'find surf shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: skate */
   $handler = $view->new_display('page', 'skate', 'page_2');
@@ -296,6 +304,12 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'skate';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'skate';
+  $handler->display->display_options['menu']['description'] = 'find skate shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: geofield map */
   $handler = $view->new_display('attachment', 'geofield map', 'geofield_map');
@@ -688,6 +702,12 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'snow';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'snow';
+  $handler->display->display_options['menu']['description'] = 'find snow shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: bike */
   $handler = $view->new_display('page', 'bike', 'page_4');
@@ -695,6 +715,12 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'bike directory';
   $handler->display->display_options['display_description'] = 'gozulla bike directory';
   $handler->display->display_options['path'] = 'bike';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'bike';
+  $handler->display->display_options['menu']['description'] = 'find bike shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: climb */
   $handler = $view->new_display('page', 'climb', 'page_5');
@@ -741,13 +767,33 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'climb';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'climb';
+  $handler->display->display_options['menu']['description'] = 'find climb shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: boat */
   $handler = $view->new_display('page', 'boat', 'page_6');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'boat directory';
   $handler->display->display_options['display_description'] = 'gozulla boat directory';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['columns'] = '2';
+  $handler->display->display_options['style_options']['fill_single_line'] = 1;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['path'] = 'boat';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'boat';
+  $handler->display->display_options['menu']['description'] = 'find boat shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: golf */
   $handler = $view->new_display('page', 'golf', 'page_7');
@@ -794,6 +840,12 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['field_sport_type_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
   $handler->display->display_options['path'] = 'golf';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'golf';
+  $handler->display->display_options['menu']['description'] = 'find golf shops near you';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: deals */
   $handler = $view->new_display('page', 'deals', 'deals');
@@ -1158,7 +1210,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['menu']['title'] = 'deals';
   $handler->display->display_options['menu']['description'] = 'find gozulla deals near you';
   $handler->display->display_options['menu']['weight'] = '10';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
   $handler->display->display_options['menu']['context'] = 0;
   $translatables['gozulla_directory'] = array(
     t('Master'),
