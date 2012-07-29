@@ -189,15 +189,18 @@ if ($result->getData()) {
   foreach ($result->getData() as $value) {
 
     if ($value['status'] == 1) {
-       $shops .= '<h3 class="places-shop fs-large">' . $value['name'] . '</h3>';
+      
+      $shops .= '<div class="places-row">';
+      
+       $shops .= '<h3 class="places-shop">' . $value['name'] . '</h3>';
        if (isset($value['address'])) { 
-         $shops .= '<div class="places-detail fs-smallest">' . $value['address'] . '</div>';
+         $shops .= '<div class="places-detail">' . $value['address'] . '</div>';
        }
        if (isset($value['locality'])) { 
-         $shops .= '<div class="places-detail fs-smallest">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
+         $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
        }
        //$shops .= '<div class="">United States</div>';
-       $shops .= '<div class="places-detail fs-smallest">~ ' . gozulla_directory_meters_to_miles($value['$distance']) . ' miles</div>';
+       $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi &gt;</div>';
        //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
       // if (isset($value['website'])) { 
        //   $shops .= '<div class=""><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
@@ -205,6 +208,8 @@ if ($result->getData()) {
         // if (isset($value['category'])) { 
          // $shops .= '<div class="">Category ' . $value['category'] . '</div>';
        // }
+       
+      $shops .= '</div>';
 
      }
        

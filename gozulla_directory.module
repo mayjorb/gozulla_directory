@@ -75,7 +75,7 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
     $city_state = $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'];
   }
   else {
-    $city_state = t('Cannon Beach, Oregon');
+    $city_state = t('Newport, OR');
   }
   
   switch ($form_id) {
@@ -90,19 +90,24 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
         $form['#id'] == 'views-exposed-form-gozulla-directory-deals') {    
         
         // Using dpm with Devel installed to give me array data on the Views form
-        //dpm($form);
+       
         $form['submit'] = array(
           '#type' => 'image_button',
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
+        
+        $form['circle']['location']['#size'] = 15; 
         $form['circle']['location']['#default_value'] = $city_state; 
        
         $form['circle']['value']['#field_prefix'] = t('<strong>Change Location:</strong> '); 
-        $form['circle']['value']['#field_suffix'] = t('mi'); 
+        $form['circle']['value']['#field_suffix'] = t('miles'); 
+        
+         //dpm($form);
       }
     break;
   }
 }
+
 
 /**
  * Implements hook_theme()
