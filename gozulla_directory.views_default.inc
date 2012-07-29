@@ -23,6 +23,7 @@ function gozulla_directory_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'gozulla directory';
+  $handler->display->display_options['css_class'] = 'gozulla-directory';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -117,10 +118,8 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['distance']['empty_zero'] = 0;
   $handler->display->display_options['fields']['distance']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['distance']['set_precision'] = 1;
-  $handler->display->display_options['fields']['distance']['precision'] = '2';
+  $handler->display->display_options['fields']['distance']['precision'] = '1';
   $handler->display->display_options['fields']['distance']['format_plural'] = 0;
-  $handler->display->display_options['fields']['distance']['prefix'] = '~';
-  $handler->display->display_options['fields']['distance']['suffix'] = 'miles';
   $handler->display->display_options['fields']['distance']['location_provider'] = 'circle';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
@@ -1309,8 +1308,6 @@ function gozulla_directory_views_default_views() {
     t('Offset'),
     t('.'),
     t(','),
-    t('~'),
-    t('miles'),
     t('&nbsp;'),
     t('[ edit ]'),
     t('surf'),
@@ -1322,6 +1319,8 @@ function gozulla_directory_views_default_views() {
     t('geofield map'),
     t('[title] 
 [field_address]'),
+    t('~'),
+    t('miles'),
     t('Geofield'),
     t('featured shop'),
     t('one hot shop'),
