@@ -99,7 +99,7 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
         $form['circle']['location']['#size'] = 15; 
         $form['circle']['location']['#default_value'] = $city_state; 
        
-        $form['circle']['value']['#field_prefix'] = t('<strong>Change Location:</strong> '); 
+        $form['circle']['value']['#field_prefix'] = t('<strong>Location:</strong> '); 
         $form['circle']['value']['#field_suffix'] = t('miles'); 
         
          //dpm($form);
