@@ -80,13 +80,13 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
   
   switch ($form_id) {
     case 'views_exposed_form':
-      if ($form['#id'] == 'views-exposed-form-gozulla-directory-page-1' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-2' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-3' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-4' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-5' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-6' ||
-        $form['#id'] == 'views-exposed-form-gozulla-directory-page-7' ||
+      if ($form['#id'] == 'views-exposed-form-gozulla-directory-bike' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-boat' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-climb' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-golf' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-skate' || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-snow' ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-surf' ||
         $form['#id'] == 'views-exposed-form-gozulla-directory-deals') {    
         
         // Using dpm with Devel installed to give me array data on the Views form
