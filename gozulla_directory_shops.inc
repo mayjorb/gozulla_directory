@@ -217,5 +217,5 @@ if ($result->getData()) {
 
 }
 else {
-  $shops .= '<h3>no ' . $sport . ' shops found</h3><p>Try increasing the miles and/or changing the location.</p>';
+  $shops .= '<div class="places-row"><h3 class="places-shop">no ' . $sport . ' shops found</h3><div class="places-detail">Try increasing the miles and/or changing the location.</div></div>';
 }

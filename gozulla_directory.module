@@ -69,7 +69,7 @@ function gozulla_directory_menu() {
   return $items;
 }
 
-function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
+function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
   
   if (isset($_SESSION['ip_geoloc']['location']['locality']) && isset($_SESSION['ip_geoloc']['location']['administrative_area_level_1'])) {
     $city_state = $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'];
@@ -78,7 +78,9 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
     $city_state = t('Newport, OR');
   }
   
+  //dpm($form);
   switch ($form_id) {
+    
     case 'views_exposed_form':
       if ($form['#id'] == 'views-exposed-form-gozulla-directory-bike' || 
         $form['#id'] == 'views-exposed-form-gozulla-directory-boat' || 
@@ -95,6 +97,10 @@ function gozulla_directory_form_alter(&$form, $form_state, $form_id) {
           '#type' => 'image_button',
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
+        
+        
+      
+        $form['circle']['value']['#default_value'] = 20; 
         
         $form['circle']['location']['#size'] = 15; 
         $form['circle']['location']['#default_value'] = $city_state; 
