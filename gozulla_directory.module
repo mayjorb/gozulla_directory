@@ -75,10 +75,10 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
     $city_state = $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'];
   }
   else {
-    $city_state = t('Newport, OR');
+    $city_state = t('Denver, CO');
   }
   
-  //dpm($form);
+  //dpm($_GET());
   switch ($form_id) {
     
     case 'views_exposed_form':
