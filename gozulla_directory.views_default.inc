@@ -414,7 +414,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['field_address']['label'] = '';
   $handler->display->display_options['fields']['field_address']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['field_address']['alter']['text'] = '[title] 
-[field_address]';
+  [field_address]';
   $handler->display->display_options['fields']['field_address']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_address']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_address']['alter']['external'] = 0;
@@ -1088,8 +1088,8 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = '<h3>no deals found near your location</h3>
 
-<div>Try increasing the miles and/or changing the location.</div>
-';
+  <div>Try increasing the miles and/or changing the location.</div>
+  ';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['empty']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -1456,8 +1456,8 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = '<h3>no deals found near your location</h3>
 
-<div>Try increasing the miles and/or changing the location.</div>
-';
+  <div>Try increasing the miles and/or changing the location.</div>
+  ';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['empty']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -1785,7 +1785,7 @@ function gozulla_directory_views_default_views() {
     t('gozulla skate directory'),
     t('geofield map'),
     t('[title] 
-[field_address]'),
+  [field_address]'),
     t('~'),
     t('miles'),
     t('Geofield'),
@@ -1813,8 +1813,8 @@ function gozulla_directory_views_default_views() {
     t('displays gozulla deals by proximity and/or sports'),
     t('<h3>no deals found near your location</h3>
 
-<div>Try increasing the miles and/or changing the location.</div>
-'),
+  <div>Try increasing the miles and/or changing the location.</div>
+  '),
     t('field_gozulla_location'),
     t('[field_address-premise]'),
     t('&nbsp;'),
