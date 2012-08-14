@@ -75,7 +75,7 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
     $city_state = $_SESSION['ip_geoloc']['location']['locality'] . ', ' . $_SESSION['ip_geoloc']['location']['administrative_area_level_1'];
   }
   else {
-    $city_state = t('Denver, CO');
+    $city_state = t('Newport, OR');
   }
   
   //dpm($_GET());
@@ -89,8 +89,9 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
         $form['#id'] == 'views-exposed-form-gozulla-directory-skate' || 
         $form['#id'] == 'views-exposed-form-gozulla-directory-snow' ||
         $form['#id'] == 'views-exposed-form-gozulla-directory-surf' ||
-        $form['#id'] == 'views-exposed-form-gozulla-directory-deals') {    
-        
+        $form['#id'] == 'views-exposed-form-gozulla-directory-deals' ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-deals-by-sport') {    
+
         // Using dpm with Devel installed to give me array data on the Views form
        
         $form['submit'] = array(
@@ -98,13 +99,12 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
         
+        $form['circle']['value']['#default_value'] = 50;
         
-      
-        $form['circle']['value']['#default_value'] = 20; 
-        
-        $form['circle']['location']['#size'] = 15; 
+        $form['circle']['location']['#size'] = 14; 
         $form['circle']['location']['#default_value'] = $city_state; 
        
+     
         $form['circle']['value']['#field_prefix'] = t('<strong>Location:</strong> '); 
         $form['circle']['value']['#field_suffix'] = t('miles'); 
         
