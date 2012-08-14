@@ -46,6 +46,35 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = 'shops | deals';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
+  /* Field: Content: Sports */
+  $handler->display->display_options['fields']['field_sport_type']['id'] = 'field_sport_type';
+  $handler->display->display_options['fields']['field_sport_type']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['fields']['field_sport_type']['field'] = 'field_sport_type';
+  $handler->display->display_options['fields']['field_sport_type']['label'] = '';
+  $handler->display->display_options['fields']['field_sport_type']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sport_type']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_sport_type']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_sport_type']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_sport_type']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_sport_type']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_sport_type']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_sport_type']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -155,11 +184,12 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['distance']['precision'] = '1';
   $handler->display->display_options['fields']['distance']['format_plural'] = 0;
   $handler->display->display_options['fields']['distance']['location_provider'] = 'circle';
-  /* Field: Node: Edit link */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['edit_node']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['edit_node']['alter']['absolute'] = 0;
@@ -188,7 +218,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['tid']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
@@ -633,7 +663,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['field_website']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_website']['type'] = 'link_url';
   $handler->display->display_options['fields']['field_website']['field_api_classes'] = 0;
-  /* Field: Node: Edit link */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -744,6 +774,15 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'bike directory';
   $handler->display->display_options['display_description'] = 'gozulla bike directory';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'shops | <a class="shops-deals-link" href="/deals/bike">deals</a>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -770,7 +809,6 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
   $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
   $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
-  $handler->display->display_options['filters']['circle']['expose']['remember'] = 1;
   $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
   $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
   $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
@@ -1260,7 +1298,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Node: Edit link */
+  /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1284,6 +1322,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['empty_zero'] = 0;
   $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['edit_node']['text'] = '[ edit deal ]';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1303,7 +1342,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['filters']['circle']['id'] = 'circle';
   $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
   $handler->display->display_options['filters']['circle']['field'] = 'circle';
-  $handler->display->display_options['filters']['circle']['value']['value'] = '20';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '50';
   $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
   $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
   $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
@@ -1323,6 +1362,396 @@ function gozulla_directory_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['path'] = 'deals';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'deals';
+  $handler->display->display_options['menu']['description'] = 'find gozulla deals near you';
+  $handler->display->display_options['menu']['weight'] = '10';
+  $handler->display->display_options['menu']['name'] = 'menu-sport-links';
+  $handler->display->display_options['menu']['context'] = 0;
+
+  /* Display: deals by sport */
+  $handler = $view->new_display('page', 'deals by sport', 'deals_by_sport');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'gozulla deals';
+  $handler->display->display_options['display_description'] = 'displays gozulla deals by proximity and sport';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_deal_photo' => 'field_deal_photo',
+    'title_1' => 'field_deal_photo',
+    'field_description' => 'field_deal_photo',
+    'title' => 'title',
+    'field_address' => 'title',
+    'distance' => 'title',
+    'nothing' => 'title',
+    'edit_node' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_deal_photo' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'title_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_description' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_address' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'distance' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = '<h3>no deals found near your location</h3>
+
+<div>Try increasing the miles and/or changing the location.</div>
+';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: gozulla location (field_gozulla_location) - reverse */
+  $handler->display->display_options['relationships']['reverse_field_gozulla_location_node']['id'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['relationships']['reverse_field_gozulla_location_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_gozulla_location_node']['field'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['relationships']['reverse_field_gozulla_location_node']['required'] = 1;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Deal photo */
+  $handler->display->display_options['fields']['field_deal_photo']['id'] = 'field_deal_photo';
+  $handler->display->display_options['fields']['field_deal_photo']['table'] = 'field_data_field_deal_photo';
+  $handler->display->display_options['fields']['field_deal_photo']['field'] = 'field_deal_photo';
+  $handler->display->display_options['fields']['field_deal_photo']['relationship'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['fields']['field_deal_photo']['label'] = '';
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['element_class'] = 'float-right';
+  $handler->display->display_options['fields']['field_deal_photo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_deal_photo']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_deal_photo']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_deal_photo']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_deal_photo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_deal_photo']['type'] = 'colorbox';
+  $handler->display->display_options['fields']['field_deal_photo']['settings'] = array(
+    'colorbox_node_style' => 'detail_thumbnail',
+    'colorbox_image_style' => '',
+    'colorbox_gallery' => 'post',
+    'colorbox_gallery_custom' => '',
+    'colorbox_caption' => 'none',
+    'colorbox_caption_custom' => '',
+  );
+  $handler->display->display_options['fields']['field_deal_photo']['field_api_classes'] = 0;
+  /* Field: Content revision: Title */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node_revision';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_1']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_1']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['title_1']['link_to_node_revision'] = 0;
+  /* Field: Content: Shop Description */
+  $handler->display->display_options['fields']['field_description']['id'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['table'] = 'field_data_field_description';
+  $handler->display->display_options['fields']['field_description']['field'] = 'field_description';
+  $handler->display->display_options['fields']['field_description']['relationship'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['fields']['field_description']['label'] = '';
+  $handler->display->display_options['fields']['field_description']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['nl2br'] = 1;
+  $handler->display->display_options['fields']['field_description']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_description']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_description']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_description']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_description']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_description']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_description']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_description']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_description']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Field: Address */
+  $handler->display->display_options['fields']['field_address']['id'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['table'] = 'field_data_field_address';
+  $handler->display->display_options['fields']['field_address']['field'] = 'field_address';
+  $handler->display->display_options['fields']['field_address']['label'] = '';
+  $handler->display->display_options['fields']['field_address']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['text'] = '[field_address-premise]';
+  $handler->display->display_options['fields']['field_address']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_address']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_address']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_address']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_address']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_address']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_address']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_address']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_address']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_address']['click_sort_column'] = 'country';
+  $handler->display->display_options['fields']['field_address']['settings'] = array(
+    'use_widget_handlers' => 0,
+    'format_handlers' => array(
+      'address' => 'address',
+      'address-hide-country' => 'address-hide-country',
+    ),
+  );
+  $handler->display->display_options['fields']['field_address']['field_api_classes'] = 0;
+  /* Field: Proximity: Distance */
+  $handler->display->display_options['fields']['distance']['id'] = 'distance';
+  $handler->display->display_options['fields']['distance']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['fields']['distance']['field'] = 'distance';
+  $handler->display->display_options['fields']['distance']['label'] = '';
+  $handler->display->display_options['fields']['distance']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['distance']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['distance']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['distance']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['distance']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['distance']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['distance']['hide_empty'] = 1;
+  $handler->display->display_options['fields']['distance']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['distance']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['distance']['set_precision'] = 1;
+  $handler->display->display_options['fields']['distance']['precision'] = '2';
+  $handler->display->display_options['fields']['distance']['format_plural'] = 0;
+  $handler->display->display_options['fields']['distance']['prefix'] = '~';
+  $handler->display->display_options['fields']['distance']['suffix'] = 'miles';
+  $handler->display->display_options['fields']['distance']['location_provider'] = 'circle';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '&nbsp;';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nothing']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nothing']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nothing']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'clearfix';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['relationship'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['edit_node']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['edit_node']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['edit_node']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['edit_node']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['edit_node']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['edit_node']['text'] = '[ edit deal ]';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Sports (field_sport_type) */
+  $handler->display->display_options['arguments']['field_sport_type_tid']['id'] = 'field_sport_type_tid';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['table'] = 'field_data_field_sport_type';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['field'] = 'field_sport_type_tid';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['default_argument_options']['term_page'] = 1;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['default_argument_options']['node'] = 0;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['default_argument_options']['limit'] = 0;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['specify_validation'] = 1;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['validate_options']['vocabularies'] = array(
+    'gozulla_sport' => 'gozulla_sport',
+  );
+  $handler->display->display_options['arguments']['field_sport_type_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_sport_type_tid']['validate_options']['transform'] = 0;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_sport_type_tid']['not'] = 0;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'gozulla_location' => 'gozulla_location',
+  );
+  /* Filter criterion: Proximity: Great-circle */
+  $handler->display->display_options['filters']['circle']['id'] = 'circle';
+  $handler->display->display_options['filters']['circle']['table'] = 'openlayers_proximity';
+  $handler->display->display_options['filters']['circle']['field'] = 'circle';
+  $handler->display->display_options['filters']['circle']['value']['value'] = '50';
+  $handler->display->display_options['filters']['circle']['value']['location'] = 'Newport, OR';
+  $handler->display->display_options['filters']['circle']['value']['node'] = '1630';
+  $handler->display->display_options['filters']['circle']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['circle']['expose']['operator_id'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['operator'] = 'circle_op';
+  $handler->display->display_options['filters']['circle']['expose']['identifier'] = 'circle';
+  $handler->display->display_options['filters']['circle']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['circle']['expose']['use_unit'] = 0;
+  $handler->display->display_options['filters']['circle']['expose']['use_location'] = 1;
+  $handler->display->display_options['filters']['circle']['expose']['use_node'] = 0;
+  /* Filter criterion: Content: Deal active  (field_deal_active_) */
+  $handler->display->display_options['filters']['field_deal_active__value']['id'] = 'field_deal_active__value';
+  $handler->display->display_options['filters']['field_deal_active__value']['table'] = 'field_data_field_deal_active_';
+  $handler->display->display_options['filters']['field_deal_active__value']['field'] = 'field_deal_active__value';
+  $handler->display->display_options['filters']['field_deal_active__value']['relationship'] = 'reverse_field_gozulla_location_node';
+  $handler->display->display_options['filters']['field_deal_active__value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['path'] = 'deals/%';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'deals';
   $handler->display->display_options['menu']['description'] = 'find gozulla deals near you';
@@ -1370,6 +1799,7 @@ function gozulla_directory_views_default_views() {
     t('bike'),
     t('bike directory'),
     t('gozulla bike directory'),
+    t('shops | <a class="shops-deals-link" href="/deals/bike">deals</a>'),
     t('climb'),
     t('climb directory'),
     t('gozulla climb directory'),
@@ -1389,6 +1819,8 @@ function gozulla_directory_views_default_views() {
     t('[field_address-premise]'),
     t('&nbsp;'),
     t('[ edit deal ]'),
+    t('deals by sport'),
+    t('displays gozulla deals by proximity and sport'),
   );
   $export['gozulla_directory'] = $view;
 

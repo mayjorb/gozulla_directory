@@ -38,6 +38,7 @@ features[field][] = node-gozulla_location-field_factual_id
 features[field][] = node-gozulla_location-field_geofield
 features[field][] = node-gozulla_location-field_gozulla_subscription
 features[field][] = node-gozulla_location-field_location_brands
+features[field][] = node-gozulla_location-field_location_description
 features[field][] = node-gozulla_location-field_location_email
 features[field][] = node-gozulla_location-field_location_hours
 features[field][] = node-gozulla_location-field_location_logo
