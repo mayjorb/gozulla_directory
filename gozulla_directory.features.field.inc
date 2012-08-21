@@ -44,6 +44,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'addressfield',
@@ -136,6 +142,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -213,6 +225,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -276,6 +294,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'geofield_map',
@@ -395,6 +419,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -468,6 +498,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -544,6 +580,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -602,6 +644,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'email',
@@ -678,6 +726,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -754,6 +808,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -848,6 +908,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => 'Upload photos to be be displayed on this page',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -943,6 +1009,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -1020,6 +1092,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -1100,6 +1178,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -1173,6 +1257,12 @@ function gozulla_directory_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'colorbox' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'link',

@@ -38,19 +38,29 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Text area */
+  /* Header: common-links */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'shops | deals';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Field: Content: Sports */
   $handler->display->display_options['fields']['field_sport_type']['id'] = 'field_sport_type';
   $handler->display->display_options['fields']['field_sport_type']['table'] = 'field_data_field_sport_type';
   $handler->display->display_options['fields']['field_sport_type']['field'] = 'field_sport_type';
   $handler->display->display_options['fields']['field_sport_type']['label'] = '';
+  $handler->display->display_options['fields']['field_sport_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_sport_type']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_sport_type']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_sport_type']['alter']['absolute'] = 0;
@@ -264,6 +274,24 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'surf directory';
   $handler->display->display_options['display_description'] = 'gozulla surf directory';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: common-links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/surf" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/surf" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -318,6 +346,24 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'skate directory';
   $handler->display->display_options['display_description'] = 'gozulla skate directory';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: common-links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/skate" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/skate" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -720,6 +766,24 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'snow directory';
   $handler->display->display_options['display_description'] = 'gozulla snow directory';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: common-links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/snow" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/snow" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -775,13 +839,22 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['display_description'] = 'gozulla bike directory';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
+  /* Header: common-links */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'shops | <a class="shops-deals-link" href="/deals/bike">deals</a>';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/bike" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/bike" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -837,6 +910,24 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'climb directory';
   $handler->display->display_options['display_description'] = 'gozulla climb directory';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: common-links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/climb" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/climb" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -899,6 +990,24 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: common-links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/boat" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/boat" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -953,6 +1062,24 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['title'] = 'golf directory';
   $handler->display->display_options['display_description'] = 'gozulla golf directory';
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: common-links */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/golf" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1080,6 +1207,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1448,6 +1576,23 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
+	<span class="common-links sport"><a id="shops-link" href="/%1" title="locate gozulla shops">shops</a>
+		<span class"link-spander">|</span>
+	</span> 
+	<span class="common-links lodging">lodging
+		<span class"link-spander">|</span> 
+		</span> 
+	<span class="common-links deal clearfix"><a id="deals-link" href="/deals/%1" title="find gozulla deals">deals</a></span>
+</div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 1;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1770,7 +1915,15 @@ function gozulla_directory_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('shops | deals'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/" title="find gozulla deals">deals</a></span>
+</div>'),
     t('DEAL$'),
     t('deals'),
     t('.'),
@@ -1780,9 +1933,27 @@ function gozulla_directory_views_default_views() {
     t('surf'),
     t('surf directory'),
     t('gozulla surf directory'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/surf" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/surf" title="find gozulla deals">deals</a></span>
+</div>'),
     t('skate'),
     t('skate directory'),
     t('gozulla skate directory'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/skate" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/skate" title="find gozulla deals">deals</a></span>
+</div>'),
     t('geofield map'),
     t('[title] 
   [field_address]'),
@@ -1796,19 +1967,63 @@ function gozulla_directory_views_default_views() {
     t('snow'),
     t('snow directory'),
     t('gozulla snow directory'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/snow" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/snow" title="find gozulla deals">deals</a></span>
+</div>'),
     t('bike'),
     t('bike directory'),
     t('gozulla bike directory'),
-    t('shops | <a class="shops-deals-link" href="/deals/bike">deals</a>'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/bike" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/bike" title="find gozulla deals">deals</a></span>
+</div>'),
     t('climb'),
     t('climb directory'),
     t('gozulla climb directory'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/climb" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/climb" title="find gozulla deals">deals</a></span>
+</div>'),
     t('boat'),
     t('boat directory'),
     t('gozulla boat directory'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/boat" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/boat" title="find gozulla deals">deals</a></span>
+</div>'),
     t('golf'),
     t('golf directory'),
     t('gozulla golf directory'),
+    t('<div id="common-links-container">
+	<span class="common-links"><a id="shops-link" href="/golf" title="locate gozulla shops">shops</a>
+		<span class"link-divider">|</span>
+	</span> 
+	<span class="common-links">lodging
+		<span class"link-divider">|</span> 
+		</span> 
+	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
+</div>'),
     t('gozulla deals'),
     t('displays gozulla deals by proximity and/or sports'),
     t('<h3>no deals found near your location</h3>
@@ -1821,6 +2036,15 @@ function gozulla_directory_views_default_views() {
     t('[ edit deal ]'),
     t('deals by sport'),
     t('displays gozulla deals by proximity and sport'),
+    t('<div id="common-links-container">
+	<span class="common-links sport"><a id="shops-link" href="/%1" title="locate gozulla shops">shops</a>
+		<span class"link-spander">|</span>
+	</span> 
+	<span class="common-links lodging">lodging
+		<span class"link-spander">|</span> 
+		</span> 
+	<span class="common-links deal clearfix"><a id="deals-link" href="/deals/%1" title="find gozulla deals">deals</a></span>
+</div>'),
   );
   $export['gozulla_directory'] = $view;
 
