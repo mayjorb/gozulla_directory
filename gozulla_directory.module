@@ -69,6 +69,8 @@ function gozulla_directory_menu() {
   return $items;
 }
 
+dpm($_SESSION['ip_geoloc']);
+
 function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
   
   if (isset($_SESSION['ip_geoloc']['location']['locality']) && isset($_SESSION['ip_geoloc']['location']['administrative_area_level_1'])) {
