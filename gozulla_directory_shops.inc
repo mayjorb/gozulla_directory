@@ -30,9 +30,12 @@ if (isset($_SESSION['ip_geoloc']['location']['latitude']) && isset($_SESSION['ip
   $user_lon = $_SESSION['ip_geoloc']['location']['longitude'];
 }
 else {
-  $user_lat = '45.8817737'; // cannon beach, oregon
-  $user_lon = '-123.9643052';
+  $user_lat = '44.6367836'; // newport, oregon
+  $user_lon = '-124.0534505';
 }
+
+// dpm($user_lat);
+// dpm($user_lon);
 
 if (isset($_GET['circle']['location']) && $_GET['circle']['location']) {
 
@@ -185,7 +188,7 @@ switch ($sport) {
 $shops = '';
 //dpm($result->getData());
 if ($result->getData()) {
-
+dpm($result->getData());
   foreach ($result->getData() as $value) {
 
     if ($value['status'] == 1) {
@@ -199,6 +202,9 @@ if ($result->getData()) {
        if (isset($value['locality']) && isset($value['region']) && isset($value['postcode'])) { 
          $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
        }
+       if (isset($value['tel'])) { 
+          $shops .= '<div class="places-detail">Phone: ' . $value['tel'] . '</div>';
+        }
        //$shops .= '<div class="">United States</div>';
        $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi &gt;</div>';
        //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
