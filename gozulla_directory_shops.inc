@@ -188,7 +188,7 @@ switch ($sport) {
 $shops = '';
 //dpm($result->getData());
 if ($result->getData()) {
-dpm($result->getData());
+//dpm($result->getData());
   foreach ($result->getData() as $value) {
 
     if ($value['status'] == 1) {
@@ -206,7 +206,7 @@ dpm($result->getData());
           $shops .= '<div class="places-detail">Phone: ' . $value['tel'] . '</div>';
         }
        //$shops .= '<div class="">United States</div>';
-       $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi &gt;</div>';
+       $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi </div>';
        //$shops .= '<div class="">Factual ID: ' . $value['factual_id'] . '</div>';
       //if (isset($value['website'])) { 
           //$shops .= '<div class=""><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';

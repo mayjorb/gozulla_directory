@@ -69,7 +69,7 @@ function gozulla_directory_menu() {
   return $items;
 }
 
-dpm($_SESSION['ip_geoloc']);
+//dpm($_SESSION['ip_geoloc']);
 
 function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
   
@@ -100,15 +100,15 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
           '#type' => 'image_button',
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
-        
+
         $form['circle']['value']['#default_value'] = 50;
         
         $form['circle']['location']['#size'] = 14; 
         $form['circle']['location']['#default_value'] = $city_state; 
-       
-     
-        $form['circle']['value']['#field_prefix'] = t('<strong>Location:</strong> '); 
-        $form['circle']['value']['#field_suffix'] = t('miles'); 
+        $form['circle']['location']['#field_prefix'] = '+'; 
+
+        $form['circle']['value']['#field_prefix'] =  t('<a id="findme-refresh" href="javascript:void(0);">FIND ME</a> or search '); 
+        $form['circle']['value']['#field_suffix'] = t('mi '); 
         
          //dpm($form);
       }
