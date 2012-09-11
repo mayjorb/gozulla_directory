@@ -92,6 +92,7 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
         $form['#id'] == 'views-exposed-form-gozulla-directory-snow' ||
         $form['#id'] == 'views-exposed-form-gozulla-directory-surf' ||
         $form['#id'] == 'views-exposed-form-gozulla-directory-deals' ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-lodging' ||
         $form['#id'] == 'views-exposed-form-gozulla-directory-deals-by-sport') {    
 
         // Using dpm with Devel installed to give me array data on the Views form
@@ -233,6 +234,14 @@ function gozulla_directory_block_info() {
    'pages' => 'golf',
  );
 
+$blocks['lodging'] = array(
+   // info: The name of the block.
+   'info' => t('gozulla: lodging (factual places)'),
+   'status' => TRUE,
+   'region' => 'content', 
+   'visibility' => BLOCK_VISIBILITY_LISTED,
+   'pages' => 'lodging',
+ );
   return $blocks;
 }
 
@@ -278,6 +287,11 @@ function gozulla_directory_block_view($delta = '') {
       break;
 
     case 'golf':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break; 
+
+    case 'lodging':
       $block['subject'] = t('');
       $block['content'] = gozulla_directory_contents($delta);
       break;  
@@ -330,6 +344,12 @@ function gozulla_directory_contents($which_block) {
       
     case 'golf':
       $sport = 'golf';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break; 
+
+    case 'lodging':
+      $sport = 'lodging';
       include_once('gozulla_directory_shops.inc'); // common include
       return array('#markup' => $shops);
       break; 

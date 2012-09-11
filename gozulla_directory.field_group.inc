@@ -21,7 +21,7 @@ function gozulla_directory_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Address',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_address',
       1 => 'field_geofield',
@@ -49,7 +49,7 @@ function gozulla_directory_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'guids',
-    'weight' => '12',
+    'weight' => '14',
     'children' => array(
       0 => 'field_places_id',
       1 => 'field_gozulla_subscription',

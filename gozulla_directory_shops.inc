@@ -178,6 +178,20 @@ switch ($sport) {
        )
     );
     
+  case 'lodging':
+    //start building search
+    $query = new FactualQuery;
+    $query->limit($limit);
+    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    
+    $query->_or(array(
+        $query->field("category")->equal("Travel & Tourism > Lodging > Hotels & Motels"),
+        //$query->field("name")->search("climb"),
+        //$query->field("name")->search("rock"),
+        //$query->field("name")->search("mountain")
+       )
+    );
+
     $result = $factual->fetch("places", $query);
     break;
       
