@@ -49,7 +49,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/" title="find gozulla deals">deals</a></span>
@@ -286,7 +286,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/surf" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/surf" title="find gozulla deals">deals</a></span>
@@ -358,7 +358,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/skate" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/skate" title="find gozulla deals">deals</a></span>
@@ -778,7 +778,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/snow" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/snow" title="find gozulla deals">deals</a></span>
@@ -850,7 +850,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/bike" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/bike" title="find gozulla deals">deals</a></span>
@@ -922,7 +922,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/climb" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/climb" title="find gozulla deals">deals</a></span>
@@ -1002,7 +1002,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/boat" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/boat" title="find gozulla deals">deals</a></span>
@@ -1074,7 +1074,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/golf" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
@@ -1908,7 +1908,7 @@ function gozulla_directory_views_default_views() {
   /* Display: lodging */
   $handler = $view->new_display('page', 'lodging', 'lodging');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'go lodging';
+  $handler->display->display_options['title'] = 'gozulla lodging';
   $handler->display->display_options['display_description'] = 'gozulla lodging directory';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -1922,7 +1922,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/golf" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
@@ -1991,7 +1991,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/" title="find gozulla deals">deals</a></span>
@@ -2009,7 +2009,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/surf" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/surf" title="find gozulla deals">deals</a></span>
@@ -2021,7 +2021,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/skate" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/skate" title="find gozulla deals">deals</a></span>
@@ -2043,7 +2043,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/snow" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/snow" title="find gozulla deals">deals</a></span>
@@ -2055,7 +2055,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/bike" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/bike" title="find gozulla deals">deals</a></span>
@@ -2067,7 +2067,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/climb" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/climb" title="find gozulla deals">deals</a></span>
@@ -2079,7 +2079,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/boat" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/boat" title="find gozulla deals">deals</a></span>
@@ -2091,7 +2091,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="shops-link" href="/golf" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
-	<span class="common-links">lodging
+	<span class="common-links"><a id="deals-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
 	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
@@ -2118,7 +2118,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links deal clearfix"><a id="deals-link" href="/deals/%1" title="find gozulla deals">deals</a></span>
 </div>'),
     t('lodging'),
-    t('go lodging'),
+    t('gozulla lodging'),
     t('gozulla lodging directory'),
   );
   $export['gozulla_directory'] = $view;
