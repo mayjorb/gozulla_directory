@@ -108,7 +108,7 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
         $form['circle']['location']['#default_value'] = $city_state; 
         $form['circle']['location']['#field_prefix'] = '+'; 
 
-        $form['circle']['value']['#field_prefix'] =  t(' or search '); 
+        $form['circle']['value']['#field_prefix'] =  t('<a href="#" id="findme-link">FIND ME</a> or search '); 
         $form['circle']['value']['#field_suffix'] = t('mi '); 
         
          //dpm($form);
