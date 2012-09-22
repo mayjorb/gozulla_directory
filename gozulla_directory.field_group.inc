@@ -13,10 +13,10 @@ function gozulla_directory_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_address|node|gozulla_location|form';
+  $field_group->identifier = 'group_address|node|gozullalocation|form';
   $field_group->group_name = 'group_address';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'gozulla_location';
+  $field_group->bundle = 'gozullalocation';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -36,15 +36,15 @@ function gozulla_directory_field_group_info() {
       ),
     ),
   );
-  $export['group_address|node|gozulla_location|form'] = $field_group;
+  $export['group_address|node|gozullalocation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_places_id|node|gozulla_location|form';
+  $field_group->identifier = 'group_places_id|node|gozullalocation|form';
   $field_group->group_name = 'group_places_id';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'gozulla_location';
+  $field_group->bundle = 'gozullalocation';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -66,7 +66,7 @@ function gozulla_directory_field_group_info() {
       'formatter' => 'closed',
     ),
   );
-  $export['group_places_id|node|gozulla_location|form'] = $field_group;
+  $export['group_places_id|node|gozullalocation|form'] = $field_group;
 
   return $export;
 }
