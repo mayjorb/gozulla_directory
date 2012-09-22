@@ -109,11 +109,11 @@ function gozulla_directory_image_default_styles() {
 function gozulla_directory_node_info() {
   $items = array(
     'gozulla_location' => array(
-      'name' => t('gozulla location'),
+      'name' => t('gozulla business'),
       'base' => 'node_content',
-      'description' => t('Use for adding and editing locations'),
+      'description' => t('Use for adding and editing business locations'),
       'has_title' => '1',
-      'title_label' => t('Shop Name'),
+      'title_label' => t('Business Name'),
       'help' => '',
     ),
   );

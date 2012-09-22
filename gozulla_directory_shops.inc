@@ -179,6 +179,19 @@ switch ($sport) {
     # code ...
 }
 
+// change view name
+// $view = views_get_view('catalog_search')
+// ->set_display('defaults');
+// ->set_items_per_page(0);
+// ->execute();
+// $results = $view->result;
+
+// foreach ($results as $result) {
+// $options[] = $result->term_data_name;
+// }
+
+
+
 $shops = '';
 //dpm($result->getData());
 if ($result->getData()) {

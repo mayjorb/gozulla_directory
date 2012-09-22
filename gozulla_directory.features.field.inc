@@ -61,7 +61,7 @@ function gozulla_directory_field_default_fields() {
             'use_widget_handlers' => 0,
           ),
           'type' => 'addressfield_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -103,88 +103,6 @@ function gozulla_directory_field_default_fields() {
         ),
         'type' => 'addressfield_standard',
         'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-gozulla_location-field_description'.
-  $fields['node-gozulla_location-field_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_description',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'profile2_private' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'gozulla_location',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '7',
-        ),
-        'full' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '7',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_description',
-      'label' => 'Shop Description',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '3',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '12',
       ),
     ),
   );
@@ -540,7 +458,7 @@ function gozulla_directory_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '11',
+        'weight' => '10',
       ),
     ),
   );
@@ -591,7 +509,7 @@ function gozulla_directory_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -602,7 +520,7 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_location_description',
-      'label' => 'Shop Description',
+      'label' => 'Business description',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -615,7 +533,7 @@ function gozulla_directory_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '13',
+        'weight' => '3',
       ),
     ),
   );
@@ -655,7 +573,7 @@ function gozulla_directory_field_default_fields() {
           'module' => 'email',
           'settings' => array(),
           'type' => 'email_default',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'full' => array(
           'label' => 'inline',
@@ -673,7 +591,7 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_location_email',
-      'label' => 'Shop email',
+      'label' => 'Business email',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -685,7 +603,7 @@ function gozulla_directory_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'email_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -737,7 +655,7 @@ function gozulla_directory_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'full' => array(
           'label' => 'inline',
@@ -755,7 +673,7 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_location_hours',
-      'label' => 'Shop hours',
+      'label' => 'Business hours',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -768,7 +686,7 @@ function gozulla_directory_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '4',
       ),
     ),
   );
@@ -798,6 +716,7 @@ function gozulla_directory_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
+        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -847,114 +766,14 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_location_logo',
-      'label' => 'Shop Logo',
-      'required' => FALSE,
-      'settings' => array(
-        'alt_field' => 0,
-        'default_image' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
-        'max_filesize' => '',
-        'max_resolution' => '',
-        'min_resolution' => '',
-        'title_field' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'image',
-        'settings' => array(
-          'preview_image_style' => 'thumbnail',
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'image_image',
-        'weight' => '10',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-gozulla_location-field_location_photos'.
-  $fields['node-gozulla_location-field_location_photos'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '4',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_location_photos',
-      'foreign keys' => array(
-        'fid' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'image',
-      'settings' => array(
-        'default_image' => 0,
-        'profile2_private' => FALSE,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '0',
-      'type' => 'image',
-    ),
-    'field_instance' => array(
-      'bundle' => 'gozulla_location',
-      'deleted' => '0',
-      'description' => 'Upload photos to be be displayed on this page',
-      'display' => array(
-        'colorbox' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => 'detail_thumbnail',
-          ),
-          'type' => 'image',
-          'weight' => '1',
-        ),
-        'full' => array(
-          'label' => 'hidden',
-          'module' => 'colorbox',
-          'settings' => array(
-            'colorbox_caption' => 'auto',
-            'colorbox_caption_custom' => '',
-            'colorbox_gallery' => 'post',
-            'colorbox_gallery_custom' => '',
-            'colorbox_image_style' => 'colorbox_image',
-            'colorbox_node_style' => 'detail_thumbnail',
-          ),
-          'type' => 'colorbox',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_location_photos',
-      'label' => 'Shop photos',
+      'label' => 'Business logo',
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
         'default_image' => 0,
-        'file_directory' => '[current-user:name]',
+        'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
-        'max_filesize' => '4 MB',
+        'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
         'title_field' => 0,
@@ -1025,11 +844,10 @@ function gozulla_directory_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 14,
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1040,7 +858,7 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_location_type',
-      'label' => 'Location Type',
+      'label' => 'Business type',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1050,7 +868,7 @@ function gozulla_directory_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '2',
+        'weight' => 0,
       ),
     ),
   );
@@ -1089,7 +907,7 @@ function gozulla_directory_field_default_fields() {
       'bundle' => 'gozulla_location',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => '555-555-5555 format',
       'display' => array(
         'colorbox' => array(
           'label' => 'above',
@@ -1102,7 +920,7 @@ function gozulla_directory_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'full' => array(
           'label' => 'inline',
@@ -1120,7 +938,7 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_phone',
-      'label' => 'Shop Phone',
+      'label' => 'Business Phone',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1133,7 +951,7 @@ function gozulla_directory_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
@@ -1258,7 +1076,7 @@ function gozulla_directory_field_default_fields() {
       'bundle' => 'gozulla_location',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please check the sports categories your shop sells.',
       'display' => array(
         'colorbox' => array(
           'label' => 'above',
@@ -1296,8 +1114,8 @@ function gozulla_directory_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '1',
+        'type' => 'options_buttons',
+        'weight' => '2',
       ),
     ),
   );
@@ -1350,7 +1168,7 @@ function gozulla_directory_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_url',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'inline',
@@ -1368,21 +1186,21 @@ function gozulla_directory_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_website',
-      'label' => 'Shop website',
+      'label' => 'Business website',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
           'class' => '',
           'configurable_title' => 0,
           'rel' => '',
-          'target' => 'default',
+          'target' => '_blank',
           'title' => '',
         ),
         'display' => array(
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
-        'title' => 'optional',
+        'title' => 'none',
         'title_maxlength' => '128',
         'title_value' => '',
         'url' => 0,
@@ -1394,29 +1212,29 @@ function gozulla_directory_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '4',
+        'weight' => '7',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('555-555-5555 format');
   t('Active Subscription');
   t('Address');
   t('Brands Carried');
+  t('Business Phone');
+  t('Business description');
+  t('Business email');
+  t('Business hours');
+  t('Business logo');
+  t('Business type');
+  t('Business website');
   t('Factual ID');
   t('Geo Field');
   t('Google Places ID');
-  t('Location Type');
-  t('Shop Description');
-  t('Shop Logo');
-  t('Shop Phone');
-  t('Shop email');
-  t('Shop hours');
-  t('Shop photos');
-  t('Shop website');
+  t('Please check the sports categories your shop sells.');
   t('Sports');
-  t('Upload photos to be be displayed on this page');
 
   return $fields;
 }

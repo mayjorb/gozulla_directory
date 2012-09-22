@@ -34,14 +34,17 @@ function gozulla_directory_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'colorbox' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -71,6 +74,7 @@ function gozulla_directory_strongarm() {
   $strongarm->name = 'node_options_gozulla_location';
   $strongarm->value = array(
     0 => 'status',
+    1 => 'revision',
   );
   $export['node_options_gozulla_location'] = $strongarm;
 
