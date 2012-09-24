@@ -1080,9 +1080,8 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links sport"><a id="shops-link" href="/%1" title="locate gozulla shops">shops</a>
 		<span class"link-spander">|</span>
 	</span> 
-	<span class="common-links lodging">lodging
-		<span class"link-spander">|</span> 
-		</span> 
+	<span class="common-links"><a id="lodging-link" href="/lodging" title="find gozulla lodging">lodging</a>
+		<span class"link-divider">|</span>
 	<span class="common-links deal clearfix"><a id="deals-link" href="/deals/%1" title="find gozulla deals">deals</a></span>
 </div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
@@ -1283,13 +1282,13 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['header']['area']['ui_name'] = 'common-links';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<div id="common-links-container">
-	<span class="common-links"><a id="shops-link" href="/golf" title="locate gozulla shops">shops</a>
+	<span class="common-links"><a id="shops-link" href="/" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
 	</span> 
 	<span class="common-links"><a id="lodging-link" href="/lodging" title="find gozulla lodging">lodging</a>
 		<span class"link-divider">|</span> 
 		</span> 
-	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
+	<span class="common-links"><a id="deals-link" href="/deals" title="find gozulla deals">deals</a></span>
 </div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
