@@ -60,7 +60,7 @@ if (isset($_GET['circle']['value']) && $_GET['circle']['value']) {
   $radius = $_GET['circle']['value'];
 }
 else {
-  $radius =  20;
+  $radius =  50;
 }
 
 $circle_radius = gozulla_directory_miles_to_meters($radius);
@@ -87,15 +87,22 @@ switch ($sport) {
 
   case 'boat':
     //start building search
+    $category = 'Category Legal & Financial > Banking & Financing';
     $query = new FactualQuery;
     $query->_or(array(
       $query->field("name")->search("canoe"),
       $query->field("name")->search("kayak"),
       $query->field("name")->search("raft"))
     );
+    // $query->_and(array(
+    //   $query->field("name")->search("Category Legal & Financial > Banking & Financing"))
+    // );
+
+
+    
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    //$query->field("category")->equal($category);
+    //$query->field("category")->notequal($category);
     $result = $factual->fetch("places", $query);
     break;  
 
@@ -219,9 +226,9 @@ if ($result->getData()) {
       // if (isset($value['website'])) { 
       //     $shops .= '<div class="places-detail"><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
       //   }
-        // if (isset($value['category'])) { 
-        //   $shops .= '<div class="">Category ' . $value['category'] . '</div>';
-        // }
+      // if (isset($value['category'])) { 
+      //   $shops .= '<div class="">Category ' . $value['category'] . '</div>';
+      // }
        
       $shops .= '</div>';
 
