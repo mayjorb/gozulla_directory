@@ -60,12 +60,12 @@ if (isset($_GET['circle']['value']) && is_numeric($_GET['circle']['value'])) {
   $radius = $_GET['circle']['value'];
 }
 else {
-  $radius =  50;
+  $radius =  20;
 }
 
 $circle_radius = gozulla_directory_miles_to_meters($radius);
 
-$limit = 30;
+$limit = 20;
 
 $factual = new Factual($factual_key,$factual_secret); //2-legged OAUTH
 
