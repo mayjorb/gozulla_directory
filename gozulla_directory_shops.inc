@@ -56,7 +56,7 @@ if (isset($_GET['circle']['location']) && $_GET['circle']['location']) {
 }
 
 // set circle radius
-if (isset($_GET['circle']['value']) && $_GET['circle']['value']) {
+if (isset($_GET['circle']['value']) && is_numeric($_GET['circle']['value'])) {
   $radius = $_GET['circle']['value'];
 }
 else {
@@ -165,9 +165,6 @@ switch ($sport) {
     $result = $factual->fetch("places", $query);
     break;
       
-
-
-  
   case 'lodging':
     //start building search
     $query = new FactualQuery;
@@ -182,8 +179,17 @@ switch ($sport) {
     $result = $factual->fetch("places", $query);
     break;
       
-  default:
-    # code ...
+  default: 
+    //start building search
+    $query = new FactualQuery;
+    $query->_or(array(
+      $query->field("name")->search("surf shop"),
+      $query->field("name")->search("surfboard"))
+    );
+    $query->limit($limit);
+    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    $result = $factual->fetch("places", $query);
+    break;
 }
 
 //change view name
@@ -238,5 +244,6 @@ if ($result->getData()) {
 
 }
 else {
+  $sport = '';
   $shops .= '<div class="places-row last"><h3 class="places-shop">no ' . $sport . ' shops found</h3><div class="places-detail">Try increasing the miles and/or changing the location.</div></div>';
 }

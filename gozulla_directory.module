@@ -152,16 +152,6 @@ function gozulla_directory_disc() {
   );
 }
 
-/*function gozulla_directory_help() {
-  return array('#markup' => '
-    <ul>
-      <li>
-        <div id="help-on-the-way">' . t('replace with help on the way info') . '</div>
-      </li>
-    </ul>
-    '
-  );
-}*/
 
 /**
  * Implements hook_block_info().
@@ -170,16 +160,6 @@ function gozulla_directory_disc() {
  */
 function gozulla_directory_block_info() {
 
-  // Many options are defined in hook_block_info():
-  $blocks['surf'] = array(
-    // info: The name of the block.
-    'info' => t('gozulla: surf shops (factual places)'),
-    'status' => TRUE,
-    'region' => 'content', 
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'surf',
-  );
-  
   $blocks['bike'] = array(
     // info: The name of the block.
     'info' => t('gozulla: bike shops (factual places)'),
@@ -187,6 +167,33 @@ function gozulla_directory_block_info() {
     'region' => 'content', 
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'bike',
+  );
+  
+  $blocks['boat'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: boat shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'boat',
+  );
+
+  $blocks['climb'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: climb shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'climb',
+  );  
+  
+  $blocks['golf'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: golf shops (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'golf',
   );
   
   $blocks['skate'] = array(
@@ -207,42 +214,26 @@ function gozulla_directory_block_info() {
     'pages' => 'snow',
   );
   
-  $blocks['climb'] = array(
+  $blocks['surf'] = array(
     // info: The name of the block.
-    'info' => t('gozulla: climb shops (factual places)'),
+    'info' => t('gozulla: surf shops (factual places)'),
     'status' => TRUE,
     'region' => 'content', 
     'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'climb',
+    'pages' => 'surf',
   );
-  
-  $blocks['boat'] = array(
-    // info: The name of the block.
-    'info' => t('gozulla: boat shops (factual places)'),
-    'status' => TRUE,
-    'region' => 'content', 
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'boat',
-  );
-  
- $blocks['golf'] = array(
-   // info: The name of the block.
-   'info' => t('gozulla: golf shops (factual places)'),
-   'status' => TRUE,
-   'region' => 'content', 
-   'visibility' => BLOCK_VISIBILITY_LISTED,
-   'pages' => 'golf',
- );
 
-$blocks['lodging'] = array(
-   // info: The name of the block.
-   'info' => t('gozulla: lodging (factual places)'),
-   'status' => TRUE,
-   'region' => 'content', 
-   'visibility' => BLOCK_VISIBILITY_LISTED,
-   'pages' => 'lodging',
- );
+  $blocks['lodging'] = array(
+    // info: The name of the block.
+    'info' => t('gozulla: lodging (factual places)'),
+    'status' => TRUE,
+    'region' => 'content', 
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'lodging',
+  );
+
   return $blocks;
+
 }
 
 /**
@@ -254,34 +245,18 @@ function gozulla_directory_block_view($delta = '') {
   //The $delta parameter tells us which block is being requested.
   $block = '';
   switch ($delta) {
-    case 'surf':
-      // The subject is displayed at the top of the block. Note that it
-      // should be passed through t() for translation. 
-      $block['subject'] = t('');
-      $block['content'] = gozulla_directory_contents($delta);
-      break;
-      
+
     case 'bike':
       $block['subject'] = t('');
       $block['content'] = gozulla_directory_contents($delta);
       break;
       
-    case 'skate':
+    case 'boat':
       $block['subject'] = t('');
       $block['content'] = gozulla_directory_contents($delta);
-      break;
-      
-    case 'snow':
-      $block['subject'] = t('');
-      $block['content'] = gozulla_directory_contents($delta);
-      break;
+      break;  
       
     case 'climb':
-      $block['subject'] = t('');
-      $block['content'] = gozulla_directory_contents($delta);
-      break;
-      
-    case 'boat':
       $block['subject'] = t('');
       $block['content'] = gozulla_directory_contents($delta);
       break;
@@ -291,13 +266,35 @@ function gozulla_directory_block_view($delta = '') {
       $block['content'] = gozulla_directory_contents($delta);
       break; 
 
+    case 'skate':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+      
+    case 'snow':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+
+    case 'surf':
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
+
     case 'lodging':
       $block['subject'] = t('');
       $block['content'] = gozulla_directory_contents($delta);
       break;  
+
+    default:
+      $block['subject'] = t('');
+      $block['content'] = gozulla_directory_contents($delta);
+      break;
           
   }
+
   return $block;
+
 }
 
 /**
@@ -305,33 +302,11 @@ function gozulla_directory_block_view($delta = '') {
  */
 function gozulla_directory_contents($which_block) {
   //$shops = array();
+  $sport = 'all';
   switch ($which_block) {
-    case 'surf':
-      $sport = 'surf';
-      include_once('gozulla_directory_shops.inc'); // common include
-      return array('#markup' => $shops);
-      break;
       
     case 'bike':
       $sport = 'bike';
-      include_once('gozulla_directory_shops.inc'); // common include
-      return array('#markup' => $shops);
-      break;
-      
-    case 'skate':
-      $sport = 'skate';
-      include_once('gozulla_directory_shops.inc'); // common include
-      return array('#markup' => $shops);
-      break;
-      
-    case 'snow':
-      $sport = 'snow';
-      include_once('gozulla_directory_shops.inc'); // common include
-      return array('#markup' => $shops);
-      break;
-      
-    case 'climb':
-      $sport = 'climb';
       include_once('gozulla_directory_shops.inc'); // common include
       return array('#markup' => $shops);
       break;
@@ -342,18 +317,50 @@ function gozulla_directory_contents($which_block) {
       return array('#markup' => $shops);
       break; 
       
+    case 'climb':
+      $sport = 'climb';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+      
     case 'golf':
       $sport = 'golf';
       include_once('gozulla_directory_shops.inc'); // common include
       return array('#markup' => $shops);
       break; 
 
+    case 'skate':
+      $sport = 'skate';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+      
+    case 'snow':
+      $sport = 'snow';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break; 
+
+    case 'surf':
+      $sport = 'surf';
+      include_once('gozulla_directory_shops.inc'); // common include
+      return array('#markup' => $shops);
+      break;
+
     case 'lodging':
       $sport = 'lodging';
       include_once('gozulla_directory_shops.inc'); // common include
       return array('#markup' => $shops);
       break; 
+
+    // default:
+    //   $sport = 'default';
+    //   include_once('gozulla_directory_shops.inc'); // common include
+    //   return array('#markup' => $shops);
+    //   break; 
+
   }
+
 }
 
 
