@@ -81,6 +81,7 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
   }
   
   //dpm($_GET());
+  //dpm($form_id);
   switch ($form_id) {
     
     case 'views_exposed_form':
@@ -114,6 +115,23 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
          //dpm($form);
       }
     break;
+
+    case 'gozullalocation_node_form':
+      
+
+      // unset delete button for non-admins
+      global $user;
+      if (!in_array('administrator', array_values($user->roles)) && !in_array('site manager', array_values($user->roles)) ) { 
+        unset($form['#groups']['group_places_id']);
+        unset($form['field_factual_id']['und'][0]['value']);
+        unset($form['field_places_id']['und'][0]['value']);
+        unset($form['field_gozulla_subscription']['und']);
+      }
+
+      //group_places_id
+
+      dpm($form);
+      break;
   }
 }
 

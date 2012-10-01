@@ -207,6 +207,9 @@ switch ($sport) {
 
 
 $shops = '';
+$previoustitle = '';
+$thistitle = '';
+$isduplicate = FALSE;
 //dpm($result->getData());
 if ($result->getData()) {
 //dpm($result->getData());
@@ -214,31 +217,40 @@ if ($result->getData()) {
 
     if ($value['status'] == 1) {
       
-      $shops .= '<div class="places-row">';
+     // don't output record if the title is a duplicate
+      $thistitle = $value['name'];
       
-       $shops .= '<h3 class="places-shop">' . $value['name'] . '</h3>';
-       if (isset($value['address'])) { 
-         $shops .= '<div class="places-detail">' . $value['address'] . '</div>';
-       }
-       if (isset($value['locality']) && isset($value['region']) && isset($value['postcode'])) { 
-         $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
-       }
-       if (isset($value['tel'])) { 
+      if ($thistitle != $previoustitle) {
+        
+        $shops .= '<div class="places-row">';
+      
+        $shops .= '<h3 class="places-shop">' . $value['name'] . '</h3>';
+        if (isset($value['address'])) { 
+          $shops .= '<div class="places-detail">' . $value['address'] . '</div>';
+        }
+        if (isset($value['locality']) && isset($value['region']) && isset($value['postcode'])) { 
+          $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
+         }
+        if (isset($value['tel'])) { 
           $shops .= '<div class="places-detail">Phone: ' . $value['tel'] . '</div>';
         }
-       //$shops .= '<div class="">United States</div>';
-       $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi </div>';
-       // $shops .= '<div class="places-detail">Factual ID: ' . $value['factual_id'] . '</div>';
-      // if (isset($value['website'])) { 
-      //     $shops .= '<div class="places-detail"><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
-      //   }
-      // if (isset($value['category'])) { 
-      //   $shops .= '<div class="">Category ' . $value['category'] . '</div>';
-      // }
+        //$shops .= '<div class="">United States</div>';
+        $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi </div>';
+        // $shops .= '<div class="places-detail">Factual ID: ' . $value['factual_id'] . '</div>';
+        // if (isset($value['website'])) { 
+        //     $shops .= '<div class="places-detail"><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
+        //   }
+        // if (isset($value['category'])) { 
+        //   $shops .= '<div class="">Category ' . $value['category'] . '</div>';
+        // }
        
-      $shops .= '</div>';
+        $shops .= '</div>';
 
-     }
+      }
+
+     $previoustitle = $value['name'];
+
+    }
        
   }
 
