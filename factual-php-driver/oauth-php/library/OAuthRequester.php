@@ -37,6 +37,7 @@ require_once dirname(__FILE__) . '/body/OAuthBodyContentDisposition.php';
 class OAuthRequester extends OAuthRequestSigner
 {
 	protected $files;
+	public $debug = false; //TB: added flag for curl strerr output
 
 	/**
 	 * Construct a new request signer.  Perform the request with the doRequest() method below.
@@ -114,7 +115,7 @@ class OAuthRequester extends OAuthRequestSigner
 		$text   = $this->curl_raw($curl_options);
 		$result = $this->curl_parse($text);	
 		
-		//altered this section to pass entire result thru rather than throwing exception (handling this in Factual class)
+		//TB: altered this section to pass entire result thru rather than throwing exception (handling this in Factual class)
 		if ($result['code'] < 400){
 			// Record the token time to live for this server access token, immediate delete iff ttl <= 0
 			// Only done on a succesful request.	
@@ -401,6 +402,12 @@ class OAuthRequester extends OAuthRequestSigner
 		curl_setopt($ch, CURLOPT_HEADER, 		 true);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 		 30);
 	
+	
+		//TB: add information for debug
+		if ($this->debug){
+			curl_setopt($ch, CURLOPT_VERBOSE, true);
+		}
+		
 		foreach ($opts as $k => $v)
 		{
 			if ($k != CURLOPT_HTTPHEADER)
@@ -431,6 +438,11 @@ class OAuthRequester extends OAuthRequestSigner
 		else if ($method == 'POST')
 		{
 			$data .= "\n\n".$query;
+		}
+
+		//TB: Write POST Body information for debug
+		if ($this->debug){
+			file_put_contents('php://stderr', $method." Body: ".$query."\n");
 		}
 
 		OAuthRequestLogger::setSent($data, $body);

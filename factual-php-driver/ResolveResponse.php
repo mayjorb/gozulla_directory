@@ -1,21 +1,35 @@
 <?php
 
 /**
- * Represents the response from running a fetch request against Factual, such as
- * a geolocation based query for specific places entities.
- * This is a refactoring of the Factual Driver by Aaron: https://github.com/Factual/factual-java-driver
+ * Represents the results of a Resolve Query
  * @author Tyler
  * @package Factual
  * @license Apache 2.0
  */
-class ResolveResponse extends ReadResponse {
+class ResolveResponse extends FactualResponse {
+
+	protected $data = false; //contents of entire data response
+	protected $resolved = false; //only resolved entity
+
+	protected function parseJSON($json){
+		$rootJSON = parent::parseJSON($json);
+		//Check against rowcount and resolve flag
+		if ($rootJSON['response']['included_rows'] == 1 || $rootJSON['response']['included_rows'] > 1){
+			if ($rootJSON['response']['data'][0]['resolved']){
+				$this->resolved = $rootJSON['response']['data'][0];
+				unset($this->resolved['resolved']); //remove old flag
+			}
+		}
+		$this->data = $rootJSON['response']['data'];
+    	return $rootJSON;	
+	}
 
 	/**
 	 * Checks whether query was resolved
 	 * @return bool
 	 */
 	public function isResolved() {
-		return (bool) $this->data[0]['resolved'];
+		return (bool)$this->resolved;
 	}
 
 	/**
@@ -23,26 +37,17 @@ class ResolveResponse extends ReadResponse {
 	 * @return array | false on no resolution
 	 */
 	public function getResolved() {
-		if ($this->isResolved()) {
-			return $this->data[0];
-		} else {
-			return null;
-		}
+		return $this->resolved;
 	}
 
-	/*
-	 * Gets resolved entity as object (experimental)
-	 * @return array | false on no resolution
-	 
-	public function getResolvedAsObject() {
-		if ($this->isResolved() && $this->entityType) {
-			$objectType = $this->entityType;
-			return new $objectType ($this->data[0]);
-		} else {
-			return null;
-		}
+	/**
+	 * Gets complete data array
+	 * @return array
+	 */
+	public function getData() {
+		return $this->data;
 	}
-*/
+
 
 }
 ?>

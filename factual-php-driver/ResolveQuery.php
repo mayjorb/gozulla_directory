@@ -5,7 +5,10 @@
  * @author Tyler
  */
 class ResolveQuery extends FactualQuery {
-  private $values = array();
+  const RESPONSETYPE = "ResolveResponse";
+  protected $debug = false;  
+  protected $values = array();
+  
   	/**
 	 * Whether this lib must perform URL encoding.
 	 * Set to avoid double or absent encoding
@@ -24,16 +27,27 @@ class ResolveQuery extends FactualQuery {
   }
 
 	/**
+	 * Turns on debugging and multiple results
+	 */
+	public function debug() {
+		$this->debug = true;
+	}
+
+	/**
 	 * @return string
 	 */
   public function toUrlQuery() {
-    return $this->urlPair("values", $this->toJsonStr($this->values));
+  	if ($this->debug){
+    	return $this->urlPair("values", $this->toJsonStr($this->values))."&debug=true";
+  	} else {
+    	return $this->urlPair("values", $this->toJsonStr($this->values));  		
+  	}
   }
 
 	/**
 	 * @return string
 	 */
-  private function toJsonStr($var) {
+  protected function toJsonStr($var) {
     try {
       return json_encode($this->values);
     } catch (Exception $e) {
@@ -41,7 +55,7 @@ class ResolveQuery extends FactualQuery {
     } 
   }
 
-	private function urlPair($name, $val) {
+	protected function urlPair($name, $val) {
 		if ($val != null) {
 			try {		
 				if (self::URLENCODE){	

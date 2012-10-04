@@ -16,8 +16,8 @@ class FactualTest {
 	private $classes = array (
 		"FactualCircle",
 		"FactualColumnSchema",
-		"Crosswalk",
-		"CrosswalkQuery",
+		//"Crosswalk",
+		//"CrosswalkQuery",
 		"FactualApiException",
 		"FieldFilter",
 		"FactualFilter",
@@ -305,7 +305,7 @@ class FactualTest {
 		$this->testGeocode();
 		$this->testReverseGeocode();
 		$this->testResolve();
-		$this->testCrosswalk();
+		//$this->testCrosswalk();
 		$this->testSchema();
 		$this->testCountries();
 		

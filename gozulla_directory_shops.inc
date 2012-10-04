@@ -44,9 +44,12 @@ if (isset($_GET['circle']['location']) && $_GET['circle']['location']) {
   
   $location = $_GET['circle']['location'];
   
-  $geolookup = $factual->geocode($location);
-  //dpm($geolookup);
-  
+  //$geolookup = $factual->geocode($location);
+
+  //geocode (convert an address to longitude and latitude)
+  $geolookup = $factual->geocode("425 Sherman Ave, Palo Alto, CA, USA");
+  //print_r($geolookup);
+
   // if latitude and longitude are found use these values
   if (isset($geolookup['latitude']) && $geolookup['latitude'] && isset($geolookup['longitude']) && $geolookup['longitude']) {
     $user_lat = $geolookup['latitude'];
@@ -179,17 +182,7 @@ switch ($sport) {
     $result = $factual->fetch("places", $query);
     break;
       
-  default: 
-    //start building search
-    $query = new FactualQuery;
-    $query->_or(array(
-      $query->field("name")->search("surf shop"),
-      $query->field("name")->search("surfboard"))
-    );
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $result = $factual->fetch("places", $query);
-    break;
+  
 }
 
 //change view name

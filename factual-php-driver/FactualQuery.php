@@ -12,12 +12,14 @@
  */
 
 class FactualQuery {
-	private $fullTextSearch; //string
-	private $selectFields = null; //otherwise comma-delineated list of fieldnames
-	private $limit; //int
-	private $offset; //int
-	private $includeRowCount = false; //bool
-	private $circle = null; //need to create this
+	protected $fullTextSearch; //string
+	protected $selectFields = null; //otherwise comma-delineated list of fieldnames
+	protected $limit; //int
+	protected $offset; //int
+	protected $includeRowCount = false; //bool
+	protected $geo = null; 
+	protected $keyValuePairs = array(); //misc key-value pairs added as additional parameters
+	const RESPONSETYPE = "ReadResponse";
 
 	/**
 	 * Whether this lib must perform URL encoding.
@@ -28,13 +30,13 @@ class FactualQuery {
 	/**
 	 * Holds all row filters for this Query. Implicit top-level AND.
 	 */
-	private $rowFilters = array ();
+	protected $rowFilters = array ();
 
 	/**
 	 * Holds all results sorts for this Query. Example contents:
 	 * <tt>"$distance:desc","name:asc","locality:asc"</tt>
 	 */
-	private $sorts = array ();
+	protected $sorts = array ();
 
 	/**
 	 * Sets a full text search query. Factual will use this value to perform a
@@ -47,6 +49,10 @@ class FactualQuery {
 	public function search($term) {
 		$this->fullTextSearch = $term;
 		return $this;
+	}
+
+	public function getResponseType(){
+		return self::RESPONSETYPE;
 	}
 
 	/**
@@ -62,11 +68,21 @@ class FactualQuery {
 	/**
 	 * Sets the fields to select. This is optional; default behaviour is generally
 	 * to select all fields in the schema.
-	 * 
+	 * @param mixed fields Fields to select as comma-delineated string or array
+	 * @return this Query
+	 * @deprecated 1.5.0 - Jul 30, 2012 Use FactualQuery::select();
+	 */
+	public function only($fields) {
+		return $this->select($fields);
+	}
+
+	/**
+	 * Sets the fields to select. This is optional; default behaviour is generally
+	 * to select all fields in the schema.
 	 * @param mixed fields Fields to select as comma-delineated string or array
 	 * @return this Query
 	 */
-	public function only($fields) {
+	public function select($fields) {
 		if (is_array($fields)) {
 			$fields = implode(",", $fields);
 		}
@@ -74,7 +90,7 @@ class FactualQuery {
 	}
 
 	/**
-	 * @return array of select fields set by only(), null if none.
+	 * @return array of select fields set by select(), null if none.
 	 */
 	public function getSelectFields() {
 		return $this->selectFields;
@@ -149,15 +165,30 @@ class FactualQuery {
 	/**
 	 * Adds a filter so that results can only be (roughly) within the specified
 	 * geographic circle.
-	 * 
 	 * @param circle The circle within which to bound the results.
 	 * @return this Query.
 	 */
 	public function within($circle) {
-		$this->circle = $circle;
-		
+		if (!$circle instanceof FactualCircle){
+			throw new Exception(__METHOD__." must take FactualCircle object as parameter");
+			return false;
+		}
+		$this->geo = $circle;
 		return $this;
+	}
 
+	/**
+	 * Adds a filter so that results can only be obtained at a specified point
+	 * @param circle The circle within which to bound the results.
+	 * @return this Query.
+	 */
+	public function at($point) {
+		if (!$point instanceof FactualPoint){
+			throw new Exception(__METHOD__." must take FactualPoint object as parameter");
+			return false;
+		}
+		$this->geo = $point;
+		return $this;
 	}
 
 	/**
@@ -214,11 +245,30 @@ class FactualQuery {
 		$temp['geo'] = $this->geoBoundsJsonOrNull();
 		$temp = array_filter($temp); //remove nulls		
 
-		//encode (cannot use http_build_query() as we need to *raw* encode adn this not provided until v5.4)
+		//initialize
+		$temp2 = array();
+
+		//encode (cannot use http_build_query() as we need to *raw* encode adn this not provided until PHP v5.4)
 		foreach ($temp as $key => $value){
 			$temp2[] = $key."=".rawurlencode($value);		
 		}	
+		
+		//process additional kay/value parameters
+		foreach ($this->keyValuePairs as $key => $value){
+			$temp2[] = $key."=".rawurlencode($value);	
+		}
+		
 		return implode("&", $temp2);
+	}
+
+	/**
+	 * Adds misc parameters to the URL query
+	 * @param string key Key namev
+	 * @param string un-URL-encoded value 
+	 */
+	public function addParam($key,$value){
+		$this->keyValuePairs[$key] = $value;
+		return $this->keyValuePairs;
 	}
 
 	public function toString() {
@@ -229,7 +279,7 @@ class FactualQuery {
 		}
 	}
 
-	private function fieldsJsonOrNull() {
+	protected function fieldsJsonOrNull() {
 		if ($this->selectFields != null) {
 			return $this->selectFields;
 		} else {
@@ -237,7 +287,7 @@ class FactualQuery {
 		}
 	}
 
-	private function sortsJsonOrNull() {
+	protected function sortsJsonOrNull() {
 		if (!empty ($this->sorts)) {
 			return implode(",", $this->sorts);
 		} else {
@@ -245,15 +295,15 @@ class FactualQuery {
 		}
 	}
 
-	private function geoBoundsJsonOrNull() {
-		if ($this->circle != null) {
-			return $this->circle->toJsonStr();
+	protected function geoBoundsJsonOrNull() {
+		if ($this->geo != null) {
+			return $this->geo->toJsonStr();
 		} else {
 			return null;
 		}
 	}
 
-	private function rowFiltersJsonOrNull() {
+	protected function rowFiltersJsonOrNull() {
 		if (empty ($this->rowFilters)) {
 			return null;
 		} else
@@ -276,7 +326,7 @@ class FactualQuery {
 	 * @param array Array of Query filter criteria
 	 * @return obj queries Query object
 	 */
-	private function popFilters($op, array $queries) {
+	protected function popFilters($op, array $queries) {
 		$group = new FilterGroup();
 		$group->op($op);
 		foreach ($queries as $query) {

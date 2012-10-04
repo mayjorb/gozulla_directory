@@ -16,7 +16,6 @@ class SchemaResponse extends FactualResponse {
 	private $geoEnabled; //bool
 	private $description; //string
 
-
 	/**
 	 * Parses JSON as array and assigns object values
 	 * @param string json JSON returned from API

@@ -81,7 +81,6 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
   }
   
   //dpm($_GET());
-  //dpm($form_id);
   switch ($form_id) {
     
     case 'views_exposed_form':
@@ -111,9 +110,13 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
 
         $form['circle']['value']['#field_prefix'] =  t('<span id="findme"><a href="#" id="findme-link">FIND ME</a></span> or search '); 
         $form['circle']['value']['#field_suffix'] = t('mi '); 
-        
-         //dpm($form);
       }
+      
+      if ($form['#id'] == 'views-exposed-form-feed-display-combined-feed') {
+        $form['tid']['#options']['All'] = t(' - all sports - ');
+        //dpm($form);
+      }
+      
     break;
 
     case 'gozullalocation_node_form':
@@ -130,7 +133,7 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
 
       //group_places_id
 
-      dpm($form);
+      //dpm($form);
       break;
   }
 }
