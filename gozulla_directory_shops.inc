@@ -44,10 +44,10 @@ if (isset($_GET['circle']['location']) && $_GET['circle']['location']) {
   
   $location = $_GET['circle']['location'];
   
-  //$geolookup = $factual->geocode($location);
+  $geolookup = $factual->geocode($location);
 
   //geocode (convert an address to longitude and latitude)
-  $geolookup = $factual->geocode("425 Sherman Ave, Palo Alto, CA, USA");
+  //$geolookup = $factual->geocode("425 Sherman Ave, Palo Alto, CA, USA");
   //print_r($geolookup);
 
   // if latitude and longitude are found use these values
