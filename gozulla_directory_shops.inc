@@ -198,6 +198,15 @@ switch ($sport) {
 //}
 
 
+// set var for showing debug info
+global $user;
+$show_debug = 0;
+
+if (in_array('administrator', array_values($user->roles)) || in_array('site manager', array_values($user->roles)))  {
+  $show_debug = 1;
+}
+
+
 
 $shops = '';
 $previoustitle = '';
@@ -224,18 +233,21 @@ if ($result->getData()) {
         if (isset($value['locality']) && isset($value['region']) && isset($value['postcode'])) { 
           $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
          }
-        if (isset($value['tel'])) { 
-          $shops .= '<div class="places-detail">Phone: ' . $value['tel'] . '</div>';
+        if (isset($value['tel']) && $show_debug) { 
+          $shops .= '<div class="places-detail debug-view">Phone: ' . $value['tel'] . '</div>';
         }
         //$shops .= '<div class="">United States</div>';
         $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi </div>';
-        // $shops .= '<div class="places-detail">Factual ID: ' . $value['factual_id'] . '</div>';
         // if (isset($value['website'])) { 
         //     $shops .= '<div class="places-detail"><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
         //   }
-        // if (isset($value['category'])) { 
-        //   $shops .= '<div class="">Category ' . $value['category'] . '</div>';
-        // }
+        if (isset($value['category']) && $show_debug) { 
+           $shops .= '<div class="places-detail debug-view">Category ' . $value['category'] . '</div>';
+         }
+
+        if ($show_debug) { 
+          $shops .= '<div class="places-detail debug-view">Factual ID: ' . $value['factual_id'] . '</div>';
+        }
        
         $shops .= '</div>';
 
