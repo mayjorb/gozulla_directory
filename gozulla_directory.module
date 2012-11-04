@@ -69,6 +69,11 @@ function gozulla_directory_menu() {
   return $items;
 }
 
+
+//foreach ($results as $result) {
+//$options[] = $result->term_data_name;
+//}
+
 //dpm($_SESSION['ip_geoloc']);
 
 function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
@@ -79,21 +84,26 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
   else {
     $city_state = t('Newport, OR');
   }
-  
-  //dpm($_GET());
+
+
+
+  //dpm($form);
   switch ($form_id) {
     
     case 'views_exposed_form':
-      if ($form['#id'] == 'views-exposed-form-gozulla-directory-bike' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-boat' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-climb' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-golf' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-skate' || 
-        $form['#id'] == 'views-exposed-form-gozulla-directory-snow' ||
-        $form['#id'] == 'views-exposed-form-gozulla-directory-surf' ||
-        $form['#id'] == 'views-exposed-form-gozulla-directory-deals' ||
-        $form['#id'] == 'views-exposed-form-gozulla-directory-lodging' ||
+      if ($form['#id'] == 'views-exposed-form-gozulla-directory-bike'   || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-boat'     || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-climb'    || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-golf'     || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-skate'    || 
+        $form['#id'] == 'views-exposed-form-gozulla-directory-snow'     ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-surf'     ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-deals'    ||
+        $form['#id'] == 'views-exposed-form-gozulla-directory-lodging'  ||
         $form['#id'] == 'views-exposed-form-gozulla-directory-deals-by-sport') {    
+
+
+
 
         // Using dpm with Devel installed to give me array data on the Views form
        
@@ -183,6 +193,19 @@ function gozulla_directory_block_info() {
 
   $blocks['bike'] = array(
     // info: The name of the block.
+    //$view = views_get_view('gozulla_directory');
+    //$view->set_display('bike');
+    //$view->is_cacheable = FALSE;  
+    //$view->execute();  
+    //dpm($view->exposed_raw_input);
+
+
+//     $view = views_get_view('gozulla_directory')
+//     ->set_display('defaults');
+//     ->set_items_per_page(0);
+//     ->execute();
+// $results = $view->result;
+//     views_get_view('');
     'info' => t('gozulla: bike shops (factual places)'),
     'status' => TRUE,
     'region' => 'content', 
@@ -257,6 +280,13 @@ function gozulla_directory_block_info() {
 
 }
 
+
+
+
+  
+
+
+
 /**
  * Implements hook_block_view().
  *
@@ -268,6 +298,9 @@ function gozulla_directory_block_view($delta = '') {
   switch ($delta) {
 
     case 'bike':
+
+
+
       $block['subject'] = t('');
       $block['content'] = gozulla_directory_contents($delta);
       break;
@@ -327,6 +360,63 @@ function gozulla_directory_contents($which_block) {
   switch ($which_block) {
       
     case 'bike':
+
+// $name = 'gozulla_directory';
+// $display = 'bike';
+// $filter0 = 'circle_op';
+// $filter1 = "circle['value']";
+// $filter2 = "circle['location']";
+// $view = views_get_view($name);
+
+
+// $view->exposed_input[$filter0] = '<';
+// $view->exposed_input[$filter1] = '50';
+// $view->exposed_input[$filter2] = 'Corvallis, OR';
+// $view->set_display($display);
+// $view->execute();
+// $shopresults = $view->result;
+// dpm($shopresults);
+
+  //dpm($results);
+
+//$form['circle']['location']['#default_value']
+    // $name = 'gozulla_directory';
+    // $display = 'bike';
+    // $view = views_get_view($name);
+    // $view->set_display($display);
+
+// The $exposed_filters keys must correctly correspond with the actual keys of your view's exposed filters.
+
+  //$args = array($node-> tid);
+    //$sport_id = 14;
+    //$args = array($sport_id);
+//$view->set_arguments($args);
+  //$exposed_filters = array(
+    //'keys' => 'circle_op',
+
+  //term_node_tid_depth' => 'All',
+//);
+
+
+// Pass in exposed filter values. array_merge() order prioritizes user input.
+// $view->exposed_input = array_merge($exposed_filters, (array)$view->exposed_input);
+// $view->exposed_raw_input = array_merge($exposed_filters, (array)$view->exposed_raw_input);
+// $view->exposed_data = array_merge($exposed_filters, (array)$view->exposed_data);
+
+
+//$output = $view->preview();
+//if ($view->result) {
+  //print $output;
+//}
+
+  //$view->set_items_per_page(0);
+  //$view->execute();
+  //$results = $view->result;
+
+  //dpm($results);
+
+
+
       $sport = 'bike';
       include_once('gozulla_directory_shops.inc'); // common include
       return array('#markup' => $shops);
