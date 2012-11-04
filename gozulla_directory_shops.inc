@@ -206,61 +206,87 @@ if (in_array('administrator', array_values($user->roles)) || in_array('site mana
   $show_debug = 1;
 }
 
+// $results = db_query_range('SELECT f.field_factual_id_value FROM {field_data_field_factual_id} f, {node} n WHERE f.entity_id = :nid', 0, 10, array(':nid' => n.nid));
+
+$query = db_select('field_data_field_factual_id', 'f');
+$query->join('node', 'n', 'f.entity_id = n.nid');
+$query->fields('f', array('field_factual_id_value'))
+->condition('n.status', '1', '=');
+$shopresults = $query->execute()
+->fetchAll();
+
+$shopcount = count($shopresults);
 
 
 $shops = '';
 $previoustitle = '';
 $thistitle = '';
 $isduplicate = FALSE;
-//dpm($result->getData());
+
+
 if ($result->getData()) {
 //dpm($result->getData());
-  foreach ($result->getData() as $value) {
+  foreach ($result->getData() as $value) {  
 
     if ($value['status'] == 1) {
-      
-     // don't output record if the title is a duplicate
-      $thistitle = $value['name'];
-      
-      if ($thistitle != $previoustitle) {
-        
-        $shops .= '<div class="places-row">';
-      
-        $shops .= '<h3 class="places-shop">' . $value['name'] . '</h3>';
-        if (isset($value['address'])) { 
-          $shops .= '<div class="places-detail">' . $value['address'] . '</div>';
-        }
-        if (isset($value['locality']) && isset($value['region']) && isset($value['postcode'])) { 
-          $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
-         }
-        if (isset($value['tel']) && $show_debug) { 
-          $shops .= '<div class="places-detail debug-view">Phone: ' . $value['tel'] . '</div>';
-        }
-        //$shops .= '<div class="">United States</div>';
-        $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi </div>';
-        // if (isset($value['website'])) { 
-        //     $shops .= '<div class="places-detail"><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
-        //   }
-        if (isset($value['category']) && $show_debug) { 
-           $shops .= '<div class="places-detail debug-view">Category ' . $value['category'] . '</div>';
-         }
 
-        if ($show_debug) { 
-          $shops .= '<div class="places-detail debug-view">Factual ID: ' . $value['factual_id'] . '</div>';
+      foreach ($shopresults as $record) { // remove subscribed shops from factual list
+
+        if ($record->field_factual_id_value != $value['factual_id']) {
+
+          // don't output record if the title is a duplicate
+          $thistitle = $value['name'];
+      
+          if ($thistitle != $previoustitle) {
+        
+            $shops .= '<div class="places-row">';
+      
+            $shops .= '<h3 class="places-shop">' . $value['name'] . '</h3>';
+
+            if (isset($value['address'])) { 
+              $shops .= '<div class="places-detail">' . $value['address'] . '</div>';
+            }
+
+            if (isset($value['locality']) && isset($value['region']) && isset($value['postcode'])) { 
+              $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
+            }
+
+            if (isset($value['tel']) && $show_debug) { 
+              $shops .= '<div class="places-detail debug-view">Phone: ' . $value['tel'] . '</div>';
+            }
+
+            //$shops .= '<div class="">United States</div>';
+            $shops .= '<div class="places-distance"> ' . gozulla_directory_meters_to_miles($value['$distance']) . ' mi </div>';
+
+            if (isset($value['website']) && $show_debug) { 
+              $shops .= '<div class="places-detail debug-view"><a target="_blank" href= ' . $value['website'] . '> ' . $value['website'] . '</a></div>';
+            }
+
+            if (isset($value['category']) && $show_debug) { 
+              $shops .= '<div class="places-detail debug-view">Category ' . $value['category'] . '</div>';
+            }
+
+            if ($show_debug) { 
+              $shops .= '<div class="places-detail debug-view">Factual ID: ' . $value['factual_id'] . '</div>';
+            }
+        
+            $shops .= '</div>';
+
+          }
+
+          $previoustitle = $value['name'];
+
         }
-       
-        $shops .= '</div>';
 
       }
-
-     $previoustitle = $value['name'];
-
-    }
        
+    }
   }
 
 }
+
 else {
+
   $sport = '';
   $shops .= '<div class="places-row last"><h3 class="places-shop">no ' . $sport . ' shops found</h3><div class="places-detail">Try increasing the miles and/or changing the location.</div></div>';
 }
