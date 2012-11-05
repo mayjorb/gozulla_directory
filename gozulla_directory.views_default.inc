@@ -227,7 +227,7 @@ function gozulla_directory_views_default_views() {
     12 => '12',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'surf';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'surf';
@@ -298,7 +298,7 @@ function gozulla_directory_views_default_views() {
     18 => '18',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'skate';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'skate';
@@ -489,7 +489,7 @@ function gozulla_directory_views_default_views() {
   /* Display: snow */
   $handler = $view->new_display('page', 'snow', 'snow');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'go snow';
+  $handler->display->display_options['title'] = 'go ride';
   $handler->display->display_options['display_description'] = 'gozulla snow directory';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
@@ -548,7 +548,7 @@ function gozulla_directory_views_default_views() {
     19 => '19',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'snow';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'snow';
@@ -619,7 +619,7 @@ function gozulla_directory_views_default_views() {
     14 => '14',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'bike';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'bike';
@@ -690,7 +690,7 @@ function gozulla_directory_views_default_views() {
     13 => '13',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'climb';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'climb';
@@ -761,7 +761,7 @@ function gozulla_directory_views_default_views() {
     15 => '15',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'boat';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'boat';
@@ -832,7 +832,7 @@ function gozulla_directory_views_default_views() {
     20 => '20',
   );
   $handler->display->display_options['filters']['field_sport_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'gozulla_sport';
+  $handler->display->display_options['filters']['field_sport_type_tid']['vocabulary'] = 'focus_sport';
   $handler->display->display_options['path'] = 'golf';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'golf';
@@ -844,7 +844,7 @@ function gozulla_directory_views_default_views() {
   /* Display: deals */
   $handler = $view->new_display('page', 'deals', 'deals');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla deals';
+  $handler->display->display_options['title'] = 'Focus deals';
   $handler->display->display_options['display_description'] = 'displays gozulla deals by proximity and/or sports';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -863,6 +863,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['header']['area_text_custom']['content'] = '<div id="common-links-container">
 	<span class="common-links"><a id="shops-link" href="/shops" title="locate gozulla shops">shops</a>
 		<span class"link-divider">|</span>
@@ -995,7 +996,7 @@ function gozulla_directory_views_default_views() {
   /* Display: deals by sport */
   $handler = $view->new_display('page', 'deals by sport', 'deals_by_sport');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla deals';
+  $handler->display->display_options['title'] = 'Focus deals';
   $handler->display->display_options['display_description'] = 'displays gozulla deals by proximity and sport';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['hide_admin_links'] = TRUE;
@@ -1094,7 +1095,7 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['arguments']['field_sport_type_tid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['field_sport_type_tid']['validate']['type'] = 'taxonomy_term';
   $handler->display->display_options['arguments']['field_sport_type_tid']['validate_options']['vocabularies'] = array(
-    'gozulla_sport' => 'gozulla_sport',
+    'focus_sport' => 'focus_sport',
   );
   $handler->display->display_options['arguments']['field_sport_type_tid']['validate_options']['type'] = 'convert';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
@@ -1155,7 +1156,7 @@ function gozulla_directory_views_default_views() {
   /* Display: lodging */
   $handler = $view->new_display('page', 'lodging', 'lodging');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'gozulla lodging';
+  $handler->display->display_options['title'] = 'Focus lodging';
   $handler->display->display_options['display_description'] = 'gozulla lodging directory';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['exposed_block'] = TRUE;
@@ -1215,7 +1216,6 @@ function gozulla_directory_views_default_views() {
   );
   $handler->display->display_options['filters']['field_location_type_tid']['vocabulary'] = 'company_type';
   $handler->display->display_options['path'] = 'lodging';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'golf';
   $handler->display->display_options['menu']['description'] = 'find golf shops near you';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -1285,7 +1285,7 @@ function gozulla_directory_views_default_views() {
     t('one hot shop'),
     t('Displays random gozulla location'),
     t('snow'),
-    t('go snow'),
+    t('go ride'),
     t('gozulla snow directory'),
     t('<div id="common-links-container">
 	<span class="common-links"><a id="shops-link" href="/snow" title="locate gozulla shops">shops</a>
@@ -1345,7 +1345,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links"><a id="deals-link" href="/deals/golf" title="find gozulla deals">deals</a></span>
 </div>'),
     t('deals'),
-    t('gozulla deals'),
+    t('Focus deals'),
     t('displays gozulla deals by proximity and/or sports'),
     t('<div id="common-links-container">
 	<span class="common-links"><a id="shops-link" href="/shops" title="locate gozulla shops">shops</a>
@@ -1372,7 +1372,7 @@ function gozulla_directory_views_default_views() {
 	<span class="common-links deal clearfix"><a id="deals-link" href="/deals/%1" title="find gozulla deals">deals</a></span>
 </div>'),
     t('lodging'),
-    t('gozulla lodging'),
+    t('Focus lodging'),
     t('gozulla lodging directory'),
     t('<div id="common-links-container">
 	<span class="common-links"><a id="shops-link" href="/" title="locate gozulla shops">shops</a>
