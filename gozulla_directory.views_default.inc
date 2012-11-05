@@ -85,13 +85,12 @@ function gozulla_directory_views_default_views() {
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['relationship'] = 'field_gozullalocation_nid';
   $handler->display->display_options['fields']['nid']['ui_name'] = 'deal link';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['nid']['alter']['text'] = 'DEAL$';
   $handler->display->display_options['fields']['nid']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nid']['alter']['path'] = 'node/[nid_1]';
+  $handler->display->display_options['fields']['nid']['alter']['path'] = 'node/[nid_1]#deals';
   $handler->display->display_options['fields']['nid']['element_type'] = 'div';
   $handler->display->display_options['fields']['nid']['element_class'] = 'deal-link';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
