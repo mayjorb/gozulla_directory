@@ -109,7 +109,7 @@ function gozulla_directory_image_default_styles() {
 function gozulla_directory_node_info() {
   $items = array(
     'gozullalocation' => array(
-      'name' => t('gozulla business'),
+      'name' => t('Focus business'),
       'base' => 'node_content',
       'description' => t('Use for adding and editing business locations'),
       'has_title' => '1',

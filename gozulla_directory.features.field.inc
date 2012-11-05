@@ -1063,7 +1063,7 @@ function gozulla_directory_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           0 => array(
-            'vocabulary' => 'gozulla_sport',
+            'vocabulary' => 'focus_sport',
             'parent' => '0',
           ),
         ),

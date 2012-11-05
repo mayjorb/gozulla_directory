@@ -32,9 +32,9 @@ function gozulla_directory_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'gozulla_sport' => array(
-      'name' => 'gozulla sport',
-      'machine_name' => 'gozulla_sport',
+    'focus_sport' => array(
+      'name' => 'Focus sport',
+      'machine_name' => 'focus_sport',
       'description' => 'used to determine what to display',
       'hierarchy' => '0',
       'module' => 'taxonomy',
