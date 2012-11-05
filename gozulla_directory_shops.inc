@@ -97,12 +97,9 @@ switch ($sport) {
       $query->field("name")->search("kayak"),
       $query->field("name")->search("raft"))
     );
-    // $query->_and(array(
-    //   $query->field("name")->search("Category Legal & Financial > Banking & Financing"))
-    // );
-
-
-    
+    $query->_and(array(
+      $query->field("category")->notBeginsWith("Legal & Financial"))
+    );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
     //$query->field("category")->notequal($category);
@@ -112,8 +109,10 @@ switch ($sport) {
   case 'climb':
     //start building search
     $query = new FactualQuery;
-    $query->_or(array(
-      $query->field("name")->search("climbing"))
+    $query->_and(array(
+      $query->field("name")->search("climbing"),
+      $query->field("category")->notBeginsWith("Health & Medicine")
+      )
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -206,8 +205,7 @@ if (in_array('administrator', array_values($user->roles)) || in_array('site mana
   $show_debug = 1;
 }
 
-// $results = db_query_range('SELECT f.field_factual_id_value FROM {field_data_field_factual_id} f, {node} n WHERE f.entity_id = :nid', 0, 10, array(':nid' => n.nid));
-
+// get list of subscribed shops factual_id
 $query = db_select('field_data_field_factual_id', 'f');
 $query->join('node', 'n', 'f.entity_id = n.nid');
 $query->fields('f', array('field_factual_id_value'))
@@ -217,7 +215,6 @@ $shopresults = $query->execute()
 
 $shopcount = count($shopresults);
 
-
 $shops = '';
 $previoustitle = '';
 $thistitle = '';
@@ -226,6 +223,7 @@ $isduplicate = FALSE;
 
 if ($result->getData()) {
 //dpm($result->getData());
+
   foreach ($result->getData() as $value) {  
 
     if ($value['status'] == 1) {
