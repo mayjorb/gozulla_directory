@@ -63,7 +63,7 @@ if (isset($_GET['circle']['value']) && is_numeric($_GET['circle']['value'])) {
   $radius = $_GET['circle']['value'];
 }
 else {
-  $radius =  20;
+  $radius =  50;
 }
 
 $circle_radius = gozulla_directory_miles_to_meters($radius);
@@ -249,8 +249,8 @@ if ($result->getData()) {
               $shops .= '<div class="places-detail">' . $value['locality'] . ' ' . $value['region'] . ' ' . $value['postcode'] . '</div>';
             }
 
-            if (isset($value['tel']) && $show_debug) { 
-              $shops .= '<div class="places-detail debug-view">Phone: ' . $value['tel'] . '</div>';
+            if (isset($value['tel'])) { 
+              $shops .= '<div class="places-detail">Phone: ' . $value['tel'] . '</div>';
             }
 
             //$shops .= '<div class="">United States</div>';
