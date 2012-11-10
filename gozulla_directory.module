@@ -112,7 +112,7 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
           '#src' => drupal_get_path('module', 'gozulla_directory') .'/images/go_btn.png',
         );
 
-        $form['circle']['value']['#default_value'] = 20;
+        $form['circle']['value']['#default_value'] = 50;
         
         $form['circle']['location']['#size'] = 14; 
         $form['circle']['location']['#default_value'] = $city_state; 
