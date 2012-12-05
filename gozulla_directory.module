@@ -136,9 +136,12 @@ function gozulla_directory_form_alter(&$form, &$form_state, $form_id) {
       global $user;
       if (!in_array('administrator', array_values($user->roles)) && !in_array('site manager', array_values($user->roles)) ) { 
         unset($form['#groups']['group_places_id']);
+        unset($form['#groups']['group_op_buttons']);
+        unset($form['field_location_type']);
         unset($form['field_factual_id']['und'][0]['value']);
         unset($form['field_places_id']['und'][0]['value']);
         unset($form['field_gozulla_subscription']['und']);
+        unset($form['revision_information']);
       }
 
       //group_places_id
