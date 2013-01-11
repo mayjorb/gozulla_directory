@@ -81,7 +81,14 @@ switch ($sport) {
     $query = new FactualQuery;
     $query->_or(array(
       $query->field("name")->search("bicycle"),
-      $query->field("name")->search("bike"))
+      $query->field("name")->search("bike"),
+      $query->field("name")->search("cyclery"),
+      $query->field("name")->search("REI"))
+    );
+    $query->_and(array(
+      $query->field("category")->notBeginsWith("Legal & Financial"),
+      $query->field("category")->notBeginsWith("Food & Beverage"),
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -90,15 +97,21 @@ switch ($sport) {
 
   case 'boat':
     //start building search
-    $category = 'Category Legal & Financial > Banking & Financing';
+    //$category = 'Category Legal & Financial > Banking & Financing';
     $query = new FactualQuery;
     $query->_or(array(
       $query->field("name")->search("canoe"),
       $query->field("name")->search("kayak"),
-      $query->field("name")->search("raft"))
+      $query->field("name")->search("raft"),
+      $query->field("name")->search("paddle"),
+      $query->field("name")->search("REI"))
     );
     $query->_and(array(
-      $query->field("category")->notBeginsWith("Legal & Financial"))
+      $query->field("category")->notBeginsWith("Legal & Financial"),
+      $query->field("category")->notBeginsWith("Food & Beverage"),
+      $query->field("category")->notBeginsWith("Health & Medicine"),
+      $query->field("category")->notBeginsWith("Business & Professional Services"),
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -109,11 +122,19 @@ switch ($sport) {
   case 'climb':
     //start building search
     $query = new FactualQuery;
-    $query->_and(array(
+    $query->_or(array(
       $query->field("name")->search("climbing"),
-      $query->field("category")->notBeginsWith("Health & Medicine")
-      )
+      $query->field("name")->search("REI"),
+      $query->field("name")->search("climbing gear"))
     );
+    $query->_and(array(
+      $query->field("category")->notBeginsWith("Legal & Financial"),
+      $query->field("category")->notBeginsWith("Food & Beverage"),
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+      $query->field("category")->notBeginsWith("Health & Medicine"),
+      $query->field("category")->notBeginsWith("Business & Professional Services"))
+    );
+
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
     //$query->field("category")->equal($category);
@@ -137,6 +158,12 @@ switch ($sport) {
       $query->field("name")->search("skateboard"),
       $query->field("name")->search("skate shop"))
     );
+    $query->_and(array(
+      $query->field("category")->notBeginsWith("Legal & Financial"),
+      $query->field("category")->notBeginsWith("Food & Beverage"),
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+      $query->field("category")->notBeginsWith("Business & Professional Services"))
+    );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
     $result = $factual->fetch("places", $query);
@@ -148,6 +175,11 @@ switch ($sport) {
     $query->_or(array(
       $query->field("name")->search("ski shop"),
       $query->field("name")->search("snowboard"))
+    );
+    $query->_and(array(
+      $query->field("category")->notBeginsWith("Legal & Financial"),
+      $query->field("category")->notBeginsWith("Food & Beverage"),
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -161,6 +193,12 @@ switch ($sport) {
     $query->_or(array(
       $query->field("name")->search("surf shop"),
       $query->field("name")->search("surfboard"))
+    );
+    $query->_and(array(
+      $query->field("category")->notBeginsWith("Legal & Financial"),
+      $query->field("category")->notBeginsWith("Food & Beverage"),
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+      $query->field("category")->notBeginsWith("Personal Care & Services"))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -177,11 +215,8 @@ switch ($sport) {
         $query->field("category")->equal("Travel & Tourism > Lodging > Hotels & Motels"),
        )
     );
-
     $result = $factual->fetch("places", $query);
     break;
-      
-  
 }
 
 //change view name
