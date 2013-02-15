@@ -17,8 +17,18 @@ function gozulla_directory_install() {
 /**
 * Implementation of hook_uninstall()
 */
-function extension_settings_uninstall() {
+function gozulla_directory_uninstall() {
   // Remove the module from the system table
   db_query("DELETE FROM {system} WHERE `name` = 'gozulla_directory'");
   db_query("DELETE FROM {variable} WHERE `name` LIKE 'gozulla_directory_%'");
+}
+
+/**
+* Adds gozulla_directory_bad_factual_ids variable.
+*/
+function gozulla_directory_update_7001() {
+	variable_set('gozulla_directory_bad_factual_ids', '');
+  
+  drupal_set_message(t('set bad factual ids variable'));
+
 }
