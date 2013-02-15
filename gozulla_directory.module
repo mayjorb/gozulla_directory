@@ -46,13 +46,13 @@ function gozulla_directory() {
 function gozulla_directory_menu() {
   
   $items = array();
-    $items['admin/config/gozulla_directory'] = array(
-      'title' => t('gozulla directory'),
-      'description' => t('gozulla directory settings.'),
+    $items['admin/config/focus_directory'] = array(
+      'title' => t('Focus Directory'),
+      'description' => t('Focus Directory settings.'),
       'page callback' => 'drupal_get_form',
       'access callback' => TRUE,
       'page arguments' => array('gozulla_directory'),
-      'access arguments' => array('administer gozulla directory settings'),
+      'access arguments' => array('administer Focus directory settings'),
       'type' => MENU_NORMAL_ITEM,
     );
 
