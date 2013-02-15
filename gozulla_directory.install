@@ -11,6 +11,7 @@
 function gozulla_directory_install() {
   variable_set('gozulla_directory_factual_key', '');
   variable_set('gozulla_directory_factual_secret', '');
+  variable_set('gozulla_directory_bad_factual_ids', '');
 }
 
 /**
