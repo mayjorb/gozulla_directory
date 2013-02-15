@@ -13,29 +13,35 @@ function gozulla_directory_perm() {
 /*
  * Admin Settings form for gozulla directory
  */
-function gozulla_directory_settings() {
-  $form['gozulla_directory_this_config'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('gozulla directory configuration settings'),
-    '#collapsible' => FALSE,
-    '#collapsed' => FALSE
-  );
+function gozulla_directory() {
   
-  $form['gozulla_directory_this_settings']['gozulla_directory_factual_key'] = array(
+  $form['gozulla_directory_factual_id'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Bad Factual ID\'s'),
+    '#description' => t('Enter bad Factual ID\'s separated by commas. Any ID listed here won\'t display in search results'),
+    '#required' => TRUE,
+  );
+
+  $form['gozulla_directory_factual_key'] = array(
     '#type' => 'textfield',
     '#title' => t('Factual API key'),
     '#default_value' => variable_get('gozulla_directory_factual_key', ''),
     '#required' => TRUE
   );
   
-  $form['gozulla_directory_this_settings']['gozulla_directory_factual_secret'] = array(
+  $form['gozulla_directory_factual_secret'] = array(
     '#type' => 'textfield',
     '#title' => t('Factual API secret'),
     '#default_value' => variable_get('gozulla_directory_factual_secret', ''),
     '#required' => TRUE
   );
+  
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Update settings'),
+  );
 
-  return system_settings_form($form);
+  return $form;
 }
 
 /**
@@ -43,23 +49,24 @@ function gozulla_directory_settings() {
  */
 function gozulla_directory_menu() {
   
- 
   $items = array();
-    $items['admin/config/system/gozulla_directory'] = array(
+    $items['admin/config/gozulla_directory'] = array(
       'title' => t('gozulla directory'),
       'description' => t('gozulla directory settings.'),
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('gozulla_directory_settings'),
-      'access arguments' => array('administer gozulla directory settings'),
-  );
-
-  $items = array();
-    $items['disc'] = array(
-      'title' => 'Disc Golf Directory',
-      'page callback' => 'gozulla_directory_disc',
       'access callback' => TRUE,
-      'type' => MENU_CALLBACK,
+      'page arguments' => array('gozulla_directory'),
+      'access arguments' => array('administer gozulla directory settings'),
+      'type' => MENU_NORMAL_ITEM,
     );
+
+  // $items = array();
+  //   $items['disc'] = array(
+  //     'title' => 'Disc Golf Directory',
+  //     'page callback' => 'gozulla_directory_disc',
+  //     'access callback' => TRUE,
+  //     'type' => MENU_CALLBACK,
+  //   );
    /* $items['help'] = array(
       'title' => 'Help On The Way',
       'page callback' => 'gozulla_directory_help',
