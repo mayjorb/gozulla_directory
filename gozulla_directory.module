@@ -15,11 +15,12 @@ function gozulla_directory_perm() {
  */
 function gozulla_directory() {
   
-  $form['gozulla_directory_factual_id'] = array(
+  $form['gozulla_directory_bad_factual_ids'] = array(
     '#type' => 'textarea',
     '#title' => t('Bad Factual ID\'s'),
-    '#description' => t('Enter bad Factual ID\'s separated by commas. Any ID listed here won\'t display in search results'),
-    '#required' => TRUE,
+    '#description' => t('Enter bad Factual ID\'s separated by commas. IDs listed here will be excluded in results'),
+    '#default_value' => variable_get('gozulla_directory_bad_factual_ids', ''),
+    '#required' => FALSE,
   );
 
   $form['gozulla_directory_factual_key'] = array(
@@ -35,13 +36,8 @@ function gozulla_directory() {
     '#default_value' => variable_get('gozulla_directory_factual_secret', ''),
     '#required' => TRUE
   );
-  
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Update settings'),
-  );
 
-  return $form;
+  return system_settings_form($form);
 }
 
 /**
