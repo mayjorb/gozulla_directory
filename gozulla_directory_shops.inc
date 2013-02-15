@@ -13,6 +13,7 @@ require_once('factual-php-driver/Factual.php');
 // set api key for oauth
 $factual_key = variable_get('gozulla_directory_factual_key',0);
 $factual_secret = variable_get('gozulla_directory_factual_secret',0);
+$exclude = explode(",", variable_get('gozulla_directory_bad_factual_ids',''));
 
 function gozulla_directory_miles_to_meters($miles) {
   $meters = round($miles * 1609.344);
@@ -68,7 +69,9 @@ else {
 
 $circle_radius = gozulla_directory_miles_to_meters($radius);
 
-$limit = 20;
+$limit = 10;
+$offset = 0;
+
 
 $factual = new Factual($factual_key,$factual_secret); //2-legged OAUTH
 
@@ -88,7 +91,8 @@ switch ($sport) {
     $query->_and(array(
       $query->field("category")->notBeginsWith("Legal & Financial"),
       $query->field("category")->notBeginsWith("Food & Beverage"),
-      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"))
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+      $query->field("factual_id")->notIn($exclude))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -111,7 +115,8 @@ switch ($sport) {
       $query->field("category")->notBeginsWith("Food & Beverage"),
       $query->field("category")->notBeginsWith("Health & Medicine"),
       $query->field("category")->notBeginsWith("Business & Professional Services"),
-      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"))
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+      $query->field("factual_id")->notIn($exclude))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -132,7 +137,8 @@ switch ($sport) {
       $query->field("category")->notBeginsWith("Food & Beverage"),
       $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
       $query->field("category")->notBeginsWith("Health & Medicine"),
-      $query->field("category")->notBeginsWith("Business & Professional Services"))
+      $query->field("category")->notBeginsWith("Business & Professional Services"),
+      $query->field("factual_id")->notIn($exclude))
     );
 
     $query->limit($limit);
@@ -162,7 +168,8 @@ switch ($sport) {
       $query->field("category")->notBeginsWith("Legal & Financial"),
       $query->field("category")->notBeginsWith("Food & Beverage"),
       $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-      $query->field("category")->notBeginsWith("Business & Professional Services"))
+      $query->field("category")->notBeginsWith("Business & Professional Services"),
+      $query->field("factual_id")->notIn($exclude))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -179,7 +186,8 @@ switch ($sport) {
     $query->_and(array(
       $query->field("category")->notBeginsWith("Legal & Financial"),
       $query->field("category")->notBeginsWith("Food & Beverage"),
-      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"))
+      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+      $query->field("factual_id")->notIn($exclude))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
@@ -198,7 +206,8 @@ switch ($sport) {
       $query->field("category")->notBeginsWith("Legal & Financial"),
       $query->field("category")->notBeginsWith("Food & Beverage"),
       $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-      $query->field("category")->notBeginsWith("Personal Care & Services"))
+      $query->field("category")->notBeginsWith("Personal Care & Services"),
+      $query->field("factual_id")->notIn($exclude))
     );
     $query->limit($limit);
     $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
