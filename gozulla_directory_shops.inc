@@ -338,11 +338,6 @@ else {
 
 } catch (FactualApiException $e) {
 
-  $errormessage = 'Fix it dude';
-  
-  $message_body = $errormessage;
-  $message_subject = 'Oops, an error occured. Factual api error on Focus Action Sports site';
-  _custom_simple_mail($message_subject, $message_body);
 
   global $user;
   if (in_array('administrator', array_values($user->roles))){
@@ -351,9 +346,23 @@ else {
     print '</pre>';
   }
 
+  $factual_error = $e->debug();
 
-  // watchdog('Factual API', '<pre>' . $e->debug() . '</pre>', WATCHDOG_ERROR));
+  $errormessage = 'Factual api error: <pre>' . print_r($factual_error, TRUE) .'</pre>';
+  
+  // $message_body = $errormessage;
+  $message_body = 'check watchdog messages for details, e.g. drush wd-show';
 
-  drupal_set_message(t('<p>Focus Action Sport\'s database isn\'t happy. We are are in the process of correcting the problem, please check back soon. </p>'), 'warning') ;
+  $server_script = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+  $subject = 'Factual api error: ' . $server_script;
+
+  $message_subject = $subject;
+  _custom_simple_mail($message_subject, $message_body);
+
+
+  watchdog('gozulla_directory', 'Factual api error: <pre>'. print_r($factual_error, TRUE) .'</pre>');
+
+
+  drupal_set_message(t('<p>Focus Action Sport\'s database isn\'t happy. We are are in the process of correcting the problem, please check back soon. </p>' . $server_script), 'warning') ;
 
 }
