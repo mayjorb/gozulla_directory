@@ -480,9 +480,72 @@ function gozulla_directory_contents($which_block) {
 
 }
 
+/**
+* Sends a simple email.
+* [or] Tested on 2012-05-31 using Drupal 7.12
+*
+* Usage:
+* 1) Paste all the below code into your module or include
+* 2) Configure the two @FIXME's.
+* 3) Visit /_custom_simple_mail to get an email.
+*
+* Credits:
+* @see http://api.drupal.org/api/drupal/includes%21mail.inc/function/drupal_mail_system/7#comment-17489
+* @see http://www.midwesternmac.com/blogs/jeff-geerling/wrapper-function-simple
+*
+*/
+ 
+/**
+* Send a simple email to specified recipient.
+*
+* @param string $message_subject
+* @param string $message_body
+*/
+function _custom_simple_mail($message_subject, $message_body) {
+  // @FIXME Set this value to your email address.
+  $my_email = 'mayjorb@gmail.com';
+  // These value can remain empty.
+  $my_module = '';
+  $my_mail_token = '';
+  $from = variable_get('system_mail', $my_email);
+  $message = array(
+    'id' => $my_module . '_' . $my_mail_token,
+    'to' => $my_email,
+    'subject' => $message_subject,
+    'body' => array($message_body),
+    'headers' => array(
+    'From' => $from,
+    'Sender' => $from,
+    'Return-Path' => $from,
+    ),
+  );
 
-
-
-
-
-
+  $system = drupal_mail_system($my_module, $my_mail_token);
+ 
+  // The format function must be called before calling the mail function.
+  $message = $system->format($message);
+ 
+  if ($system->mail($message)) {
+    drupal_set_message('_custom_simple_mail SUCCESS');
+  }
+  else {
+    drupal_set_message('_custom_simple_mail FAILURE');
+    }
+  }
+ 
+/**
+* Implements HOOK_init to test _custom_simple_mail.
+*
+* @FIXME Change 'mymodule' to your actual enabled custom module's machine name.
+*/
+function mymodule_init() {
+  if (arg(0) == '_custom_simple_mail' ) {
+    drupal_set_message('Testing _custom_simple_mail()...');
+    if (function_exists('_custom_simple_mail')) {
+      _custom_simple_mail('Test message subject', 'Test message body');
+    } 
+    else {
+      drupal_set_message('<strong>Oops!</strong> Function _custom_simple_mail() was not found.', 'error');
+    }
+  }
+}

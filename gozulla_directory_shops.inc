@@ -7,6 +7,8 @@
  * builds factual shop directories
 */
 
+try {
+
 // factual driver files
 require_once('factual-php-driver/Factual.php');
 
@@ -42,6 +44,7 @@ if (isset($_GET['circle']['location']) && $_GET['circle']['location']) {
 
   // geocode (convert an address to longitude and latitude) if submitted in form
   $factual = new Factual($factual_key,$factual_secret); //2-legged OAUTH
+  $factual->debug();
   
   $location = $_GET['circle']['location'];
   
@@ -331,4 +334,26 @@ else {
 
   $sport = '';
   $shops .= '<div class="places-row last"><h3 class="places-shop">no ' . $sport . ' shops found</h3><div class="places-detail">Try increasing the miles and/or changing the location.</div></div>';
+}
+
+} catch (FactualApiException $e) {
+
+  $errormessage = 'Fix it dude';
+  
+  $message_body = $errormessage;
+  $message_subject = 'Oops, an error occured. Factual api error on Focus Action Sports site';
+  _custom_simple_mail($message_subject, $message_body);
+
+  global $user;
+  if (in_array('administrator', array_values($user->roles))){
+    print '<pre>'; 
+    print_r($e->debug()) ;
+    print '</pre>';
+  }
+
+
+  // watchdog('Factual API', '<pre>' . $e->debug() . '</pre>', WATCHDOG_ERROR));
+
+  drupal_set_message(t('<p>Focus Action Sport\'s database isn\'t happy. We are are in the process of correcting the problem, please check back soon. </p>'), 'warning') ;
+
 }
