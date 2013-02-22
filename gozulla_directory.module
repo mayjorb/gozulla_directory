@@ -530,8 +530,8 @@ function _custom_simple_mail($message_subject, $message_body) {
   }
   else {
     drupal_set_message('_custom_simple_mail FAILURE');
-    }
   }
+}
  
 /**
 * Implements HOOK_init to test _custom_simple_mail.
