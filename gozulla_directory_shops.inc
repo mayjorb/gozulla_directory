@@ -363,6 +363,6 @@ else {
   watchdog('gozulla_directory', 'Factual api error: <pre>'. print_r($factual_error, TRUE) .'</pre>');
 
 
-  drupal_set_message(t('<p>Focus Action Sport\'s database isn\'t happy. We are are in the process of correcting the problem, please check back soon. </p>', 'warning') ;
+  drupal_set_message(t('<p>Focus Action Sport\'s database isn\'t happy. We are are in the process of correcting the problem, please check back soon. </p>'), 'warning') ;
 
 }
