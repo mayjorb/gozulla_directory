@@ -525,12 +525,17 @@ function _custom_simple_mail($message_subject, $message_body) {
   // The format function must be called before calling the mail function.
   $message = $system->format($message);
  
-  // if ($system->mail($message)) {
-  //   drupal_set_message('_custom_simple_mail SUCCESS');
-  // }
-  // else {
-  //   drupal_set_message('_custom_simple_mail FAILURE');
-  // }
+  if ($system->mail($message)) { // only show message to admins
+    global $user;
+    if (in_array('administrator', array_values($user->roles))) {
+      drupal_set_message('_custom_simple_mail SUCCESS');
+    }
+  }
+  else {
+    if (in_array('administrator', array_values($user->roles))) {
+      drupal_set_message('_custom_simple_mail FAILURE');
+    }
+  }
 }
  
 /**
