@@ -9,6 +9,10 @@
 
 try {
 
+  if ($port == 'lodging') {
+    
+  
+
 // factual driver files
 require_once('factual-php-driver/Factual.php');
 
@@ -79,13 +83,28 @@ $offset = 0;
 
 $factual = new Factual($factual_key,$factual_secret); //2-legged OAUTH
 
+}
+
 $shops = '';
 
 switch ($sport) {
 
   case 'bike':
     //start building search
-    $query = new FactualQuery;
+    // $query = new FactualQuery;
+    // // $query->_or(array(
+    // //   $query->field("name")->search("bicycle"),
+    // //   $query->field("name")->search("bike"),
+    // //   $query->field("name")->search("cyclery"),
+    // //   $query->field("name")->search("REI"))
+    // // );
+    // // $query->_and(array(
+    // //   $query->field("category")->notBeginsWith("Legal & Financial"),
+    // //   $query->field("category")->notBeginsWith("Food & Beverage"),
+    // //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    // //   $query->field("factual_id")->notIn($exclude))
+    // // );
+
     // $query->_or(array(
     //   $query->field("name")->search("bicycle"),
     //   $query->field("name")->search("bike"),
@@ -93,151 +112,138 @@ switch ($sport) {
     //   $query->field("name")->search("REI"))
     // );
     // $query->_and(array(
-    //   $query->field("category")->notBeginsWith("Legal & Financial"),
-    //   $query->field("category")->notBeginsWith("Food & Beverage"),
-    //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-    //   $query->field("factual_id")->notIn($exclude))
+    //   //$query->field("category")->notBeginsWith("Legal & Financial"),
+    //   $query->field("category_ids")->notEqual("77")
+    //   //$query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    //   //$query->field("factual_id")->notIn($exclude)
+    //   )
     // );
 
-    $query->_or(array(
-      $query->field("name")->search("bicycle"),
-      $query->field("name")->search("bike"),
-      $query->field("name")->search("cyclery"),
-      $query->field("name")->search("REI"))
-    );
-    $query->_and(array(
-      //$query->field("category")->notBeginsWith("Legal & Financial"),
-      $query->field("category_ids")->notEqual("77")
-      //$query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-      //$query->field("factual_id")->notIn($exclude)
-      )
-    );
-
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $result = $factual->fetch("places", $query);
+    // $query->limit($limit);
+    // $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    // $result = $factual->fetch("places", $query);
     break;
 
   case 'boat':
     //start building search
     //$category = 'Category Legal & Financial > Banking & Financing';
-    $query = new FactualQuery;
-    $query->_or(array(
-      $query->field("name")->search("canoe"),
-      $query->field("name")->search("kayak"),
-      $query->field("name")->search("raft"),
-      $query->field("name")->search("paddle"),
-      $query->field("name")->search("REI"))
-    );
-    // $query->_and(array(
-    //   $query->field("category")->notBeginsWith("Legal & Financial"),
-    //   $query->field("category")->notBeginsWith("Food & Beverage"),
-    //   $query->field("category")->notBeginsWith("Health & Medicine"),
-    //   $query->field("category")->notBeginsWith("Business & Professional Services"),
-    //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-    //   $query->field("factual_id")->notIn($exclude))
+    // $query = new FactualQuery;
+    // $query->_or(array(
+    //   $query->field("name")->search("canoe"),
+    //   $query->field("name")->search("kayak"),
+    //   $query->field("name")->search("raft"),
+    //   $query->field("name")->search("paddle"),
+    //   $query->field("name")->search("REI"))
     // );
-    $query->_and(array(
-      //$query->field("category")->notBeginsWith("Legal & Financial"),
-      //$query->field("category")->notBeginsWith("Food & Beverage"),
-      //$query->field("category")->notBeginsWith("Health & Medicine"),
-      //$query->field("category")->notBeginsWith("Business & Professional Services"),
-      //$query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-      //$query->field("factual_id")->notIn($exclude)
-      $query->field("category_ids")->notEqual("221"),
-      $query->field("category_ids")->notEqual("189")
-      )
-    );
+    // // $query->_and(array(
+    // //   $query->field("category")->notBeginsWith("Legal & Financial"),
+    // //   $query->field("category")->notBeginsWith("Food & Beverage"),
+    // //   $query->field("category")->notBeginsWith("Health & Medicine"),
+    // //   $query->field("category")->notBeginsWith("Business & Professional Services"),
+    // //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    // //   $query->field("factual_id")->notIn($exclude))
+    // // );
+    // $query->_and(array(
+    //   //$query->field("category")->notBeginsWith("Legal & Financial"),
+    //   //$query->field("category")->notBeginsWith("Food & Beverage"),
+    //   //$query->field("category")->notBeginsWith("Health & Medicine"),
+    //   //$query->field("category")->notBeginsWith("Business & Professional Services"),
+    //   //$query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    //   //$query->field("factual_id")->notIn($exclude)
+    //   $query->field("category_ids")->notEqual("221"),
+    //   $query->field("category_ids")->notEqual("189")
+    //   )
+    // );
 
 
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    //$query->field("category")->notequal($category);
-    $result = $factual->fetch("places", $query);
+    // $query->limit($limit);
+    // $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    // //$query->field("category")->notequal($category);
+    // $result = $factual->fetch("places", $query);
     break;  
 
   case 'climb':
     //start building search
-    $query = new FactualQuery;
-    $query->_or(array(
-      $query->field("name")->search("climbing"),
-      $query->field("name")->search("REI"),
-      $query->field("name")->search("climbing gear"))
-    );
-    $query->_and(array(
-      $query->field("category")->notBeginsWith("Legal & Financial"),
-      $query->field("category")->notBeginsWith("Food & Beverage"),
-      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-      $query->field("category")->notBeginsWith("Health & Medicine"),
-      $query->field("category")->notBeginsWith("Business & Professional Services") )
-      //$query->field("factual_id")->notIn($exclude))
-    );
+    // $query = new FactualQuery;
+    // $query->_or(array(
+    //   $query->field("name")->search("climbing"),
+    //   $query->field("name")->search("REI"),
+    //   $query->field("name")->search("climbing gear"))
+    // );
+    // $query->_and(array(
+    //   $query->field("category")->notBeginsWith("Legal & Financial"),
+    //   $query->field("category")->notBeginsWith("Food & Beverage"),
+    //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    //   $query->field("category")->notBeginsWith("Health & Medicine"),
+    //   $query->field("category")->notBeginsWith("Business & Professional Services") )
+    //   //$query->field("factual_id")->notIn($exclude))
+    // );
 
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    //$query->field("category")->equal($category);
-    $result = $factual->fetch("places", $query);
+    // $query->limit($limit);
+    // $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    // //$query->field("category")->equal($category);
+    // $result = $factual->fetch("places", $query);
     break;
   
   case 'golf':
     //start building search
-    $query = new FactualQuery;
-    $category = 'Sports & Recreation > Outdoor Recreation > Golf';
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $query->field("category")->equal($category);
-    $result = $factual->fetch("places", $query);
+    // $query = new FactualQuery;
+    // $category = 'Sports & Recreation > Outdoor Recreation > Golf';
+    // $query->limit($limit);
+    // $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    // $query->field("category")->equal($category);
+    // $result = $factual->fetch("places", $query);
     break; 
 
   case 'skate':
     //start building search
-    $query = new FactualQuery;
-    $query->_or(array(
-      $query->field("name")->search("skateboard"),
-      $query->field("name")->search("skate shop"))
-    );
-    $query->_and(array(
-      $query->field("category")->notBeginsWith("Legal & Financial"),
-      $query->field("category")->notBeginsWith("Food & Beverage"),
-      $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
-      $query->field("category")->notBeginsWith("Business & Professional Services") )
-      // $query->field("factual_id")->notIn($exclude))
-    );
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    $result = $factual->fetch("places", $query);
+    // $query = new FactualQuery;
+    // $query->_or(array(
+    //   $query->field("name")->search("skateboard"),
+    //   $query->field("name")->search("skate shop"))
+    // );
+    // $query->_and(array(
+    //   $query->field("category")->notBeginsWith("Legal & Financial"),
+    //   $query->field("category")->notBeginsWith("Food & Beverage"),
+    //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    //   $query->field("category")->notBeginsWith("Business & Professional Services") )
+    //   // $query->field("factual_id")->notIn($exclude))
+    // );
+    // $query->limit($limit);
+    // $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    // $result = $factual->fetch("places", $query);
     break;
 
   case 'snow':
     //start building search
-    $query = new FactualQuery;
-    $query->_or(array(
-      $query->field("name")->search("ski shop"),
-      $query->field("name")->search("snowboard"))
-    );
+    // $query = new FactualQuery;
+    // $query->_or(array(
+    //   $query->field("name")->search("ski shop"),
+    //   $query->field("name")->search("snowboard"))
+    // );
 
-    // $thisexclude = '';
-    // foreach ($exclude as $factual_id) {
-    //     $thisexclude .= '$query->field("factual_id")->notEqual("' . $factual_id . '"),';
-    //   }
-    //   $thisexclude .= '$query->field("category")->notBeginsWith("Legal & Financial"),
-    //   $query->field("category")->notBeginsWith("Food & Beverage"),
-    //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
+    // // $thisexclude = '';
+    // // foreach ($exclude as $factual_id) {
+    // //     $thisexclude .= '$query->field("factual_id")->notEqual("' . $factual_id . '"),';
+    // //   }
+    // //   $thisexclude .= '$query->field("category")->notBeginsWith("Legal & Financial"),
+    // //   $query->field("category")->notBeginsWith("Food & Beverage"),
+    // //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement"),
       
-    //   $query->field("category")->notBeginsWith("test") )';
-      // $thisexclude .= ');';
+    // //   $query->field("category")->notBeginsWith("test") )';
+    //   // $thisexclude .= ');';
 
-      //dpm($thisexclude, 'this exclude');
+    //   //dpm($thisexclude, 'this exclude');
 
-    $query->_and(array(
-      $query->field("category")->notBeginsWith("Legal & Financial"),
-      $query->field("category")->notBeginsWith("Food & Beverage"),
-      $query->field("category")->notBeginsWith("Real Estate & Home Improvement") )
-    );
-    $query->limit($limit);
-    $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
-    //$query->field("category")->equal($category);
-    $result = $factual->fetch("places", $query);
+    // $query->_and(array(
+    //   $query->field("category")->notBeginsWith("Legal & Financial"),
+    //   $query->field("category")->notBeginsWith("Food & Beverage"),
+    //   $query->field("category")->notBeginsWith("Real Estate & Home Improvement") )
+    // );
+    // $query->limit($limit);
+    // $query->within(new FactualCircle($user_lat, $user_lon, $circle_radius));
+    // //$query->field("category")->equal($category);
+    // $result = $factual->fetch("places", $query);
     break; 
   
   case 'surf':
