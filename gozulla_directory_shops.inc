@@ -9,7 +9,7 @@
 
 try {
 
-  if ($port == 'lodging') {
+  if ($sport == 'lodging') {
     
   
 
